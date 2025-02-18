@@ -14,7 +14,8 @@ const Transaction = () => {
       MY terea Abu aa</p>
       <h2>Jutt</h2>
       <p>RAmiz</p>
-      <h1>34wjhef</h1>
+      <p>Ali</p>
+      
       
     </div>
     </>
