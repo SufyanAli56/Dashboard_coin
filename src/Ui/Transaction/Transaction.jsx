@@ -1,181 +1,195 @@
 import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import { FaChevronLeft, FaChevronRight, FaDownload , FaCcVisa  } from "react-icons/fa";
+import { 
+  FaChevronLeft, 
+  FaChevronRight, 
+  FaDownload, 
+  FaCalendarAlt, 
+  FaMoneyBillWave, 
+  FaChartLine, 
+  FaCcVisa, 
+  FaCcMastercard 
+} from "react-icons/fa";
 
 const transactions = [
   { id: 1, name: "Bonus Payment", category: "Income", account: "Platinum Plus Visa", transactionId: "4567890135", date: "2024-09-25 11:00 AM", amount: "+$500.00", note: "Annual performance bonus", status: "Completed" },
   { id: 2, name: "Stock Dividends", category: "Investments", account: "Freedom Unlimited Mastercard", transactionId: "4567890132", date: "2024-09-24 09:00 AM", amount: "+$300.00", note: "Quarterly stock dividend", status: "Completed" },
-  { id: 3, name: "Comcast Bill Payment", category: "Utilities", account: "Platinum Plus Visa", transactionId: "4567890123", date: "2024-09-24 10:30 AM", amount: "-$150.00", note: "Monthly internet and TV bill", status: "Completed" },
-  { id: 4, name: "Freelance Project", category: "Income", account: "Platinum Plus Visa", transactionId: "4567890137", date: "2024-09-23 01:30 PM", amount: "+$1,200.00", note: "Payment for freelance design work", status: "Completed" },
-  { id: 5, name: "Amazon Purchase", category: "Food & Dining", account: "Freedom Unlimited Mastercard", transactionId: "4567890142", date: "2024-09-23 03:45 PM", amount: "-$80.95", note: "Purchased kitchen appliances", status: "Completed" },
-  { id: 6, name: "Gym Membership", category: "Healthcare", account: "Platinum Plus Visa", transactionId: "5678901234", date: "2024-09-22 07:00 AM", amount: "-$45.00", note: "Monthly gym fee for health", status: "Pending" },
-  { id: 7, name: "Rental Income", category: "Freedom Unlimited Mastercard", account: "Platinum Plus Visa", transactionId: "6678975757", date: "2024-09-22 07:00 AM", amount: "+$2500", note: "Monthly Rent From Property", status: "Completed" },
-  { id: 8, name: "State Farm Insurance", category: "Freedom Unlimited Mastercard", account: "Freedom Unlimited Mastercard", transactionId: "5567890142", date: "2024-09-23 03:45 PM", amount: "-$80.95", note: "Insurance premium", status: "Completed" },
-  { id: 9, name: "Verizon Bill", category: "Healthcare", account: "Platinum Plus Visa", transactionId: "5678901234", date: "2024-09-22 07:00 AM", amount: "-$45.00", note: "Monthly phone bill", status: "Pending" },
-  { id: 10, name: "Electricity Bill", category: "Freedom Unlimited Mastercard", account: "Platinum Plus Visa", transactionId: "6678975757", date: "2024-09-22 07:00 AM", amount: "+$2500", note: "Monthly Rent From Property", status: "Completed", },
-  { id: 11, name: "Bonus Payment", category: "Income", account: "Platinum Plus Visa", transactionId: "4567890135", date: "2024-09-25 11:00 AM", amount: "+$500.00", note: "Annual performance bonus", status: "Completed" },
-  { id: 12, name: "Stock Dividends", category: "Investments", account: "Freedom Unlimited Mastercard", transactionId: "4567890132", date: "2024-09-24 09:00 AM", amount: "+$300.00", note: "Quarterly stock dividend", status: "Completed" },
-  { id: 13, name: "Comcast Bill Payment", category: "Utilities", account: "Platinum Plus Visa", transactionId: "4567890123", date: "2024-09-24 10:30 AM", amount: "-$150.00", note: "Monthly internet and TV bill", status: "Completed" },
-  { id: 14, name: "Freelance Project", category: "Income", account: "Platinum Plus Visa", transactionId: "4567890137", date: "2024-09-23 01:30 PM", amount: "+$1,200.00", note: "Payment for freelance design work", status: "Completed" },
-  { id: 15, name: "Amazon Purchase", category: "Food & Dining", account: "Freedom Unlimited Mastercard", transactionId: "4567890142", date: "2024-09-23 03:45 PM", amount: "-$80.95", note: "Purchased kitchen appliances", status: "Completed" },
-  { id: 16, name: "Gym Membership", category: "Healthcare", account: "Platinum Plus Visa", transactionId: "5678901234", date: "2024-09-22 07:00 AM", amount: "-$45.00", note: "Monthly gym fee for health", status: "Pending" },
-  { id: 17, name: "Rental Income", category: "Freedom Unlimited Mastercard", account: "Platinum Plus Visa", transactionId: "6678975757", date: "2024-09-22 07:00 AM", amount: "+$2500", note: "Monthly Rent From Property", status: "Completed" },
-  { id: 18, name: "State Farm Insurance", category: "Freedom Unlimited Mastercard", account: "Freedom Unlimited Mastercard", transactionId: "5567890142", date: "2024-09-23 03:45 PM", amount: "-$80.95", note: "Insurance premium", status: "Completed" },
-  { id: 19, name: "Verizon Bill", category: "Healthcare", account: "Platinum Plus Visa", transactionId: "5678901234", date: "2024-09-22 07:00 AM", amount: "-$45.00", note: "Monthly phone bill", status: "Pending" },
-  { id: 20, name: "Electricity Bill", category: "Freedom Unlimited Mastercard", account: "Platinum Plus Visa", transactionId: "6678975757", date: "2024-09-22 07:00 AM", amount: "+$2500", note: "Monthly Rent From Property", status: "Completed", },
-  { id: 21, name: "Bonus Payment", category: "Income", account: "Platinum Plus Visa", transactionId: "4567890135", date: "2024-09-25 11:00 AM", amount: "+$500.00", note: "Annual performance bonus", status: "Completed" },
-  { id: 22, name: "Stock Dividends", category: "Investments", account: "Freedom Unlimited Mastercard", transactionId: "4567890132", date: "2024-09-24 09:00 AM", amount: "+$300.00", note: "Quarterly stock dividend", status: "Completed" },
-  { id: 23, name: "Comcast Bill Payment", category: "Utilities", account: "Platinum Plus Visa", transactionId: "4567890123", date: "2024-09-24 10:30 AM", amount: "-$150.00", note: "Monthly internet and TV bill", status: "Completed" },
-  { id: 24, name: "Freelance Project", category: "Income", account: "Platinum Plus Visa", transactionId: "4567890137", date: "2024-09-23 01:30 PM", amount: "+$1,200.00", note: "Payment for freelance design work", status: "Completed" },
-  { id: 25, name: "Amazon Purchase", category: "Food & Dining", account: "Freedom Unlimited Mastercard", transactionId: "4567890142", date: "2024-09-23 03:45 PM", amount: "-$80.95", note: "Purchased kitchen appliances", status: "Completed" },
-  { id: 26, name: "Gym Membership", category: "Healthcare", account: "Platinum Plus Visa", transactionId: "5678901234", date: "2024-09-22 07:00 AM", amount: "-$45.00", note: "Monthly gym fee for health", status: "Pending" },
-  { id: 27, name: "Rental Income", category: "Freedom Unlimited Mastercard", account: "Platinum Plus Visa", transactionId: "6678975757", date: "2024-09-22 07:00 AM", amount: "+$2500", note: "Monthly Rent From Property", status: "Completed" },
-  { id: 28, name: "State Farm Insurance", category: "Freedom Unlimited Mastercard", account: "Freedom Unlimited Mastercard", transactionId: "5567890142", date: "2024-09-23 03:45 PM", amount: "-$80.95", note: "Insurance premium", status: "Completed" },
-  { id: 29, name: "Verizon Bill", category: "Healthcare", account: "Platinum Plus Visa", transactionId: "5678901234", date: "2024-09-22 07:00 AM", amount: "-$45.00", note: "Monthly phone bill", status: "Pending" },
-  { id: 30, name: "Electricity Bill", category: "Freedom Unlimited Mastercard", account: "Platinum Plus Visa", transactionId: "6678975757", date: "2024-09-22 07:00 AM", amount: "+$2500", note: "Monthly Rent From Property", status: "Completed", },
-  { id: 31, name: "Bonus Payment", category: "Income", account: "Platinum Plus Visa", transactionId: "4567890135", date: "2024-09-25 11:00 AM", amount: "+$500.00", note: "Annual performance bonus", status: "Completed" },
-  { id: 32, name: "Stock Dividends", category: "Investments", account: "Freedom Unlimited Mastercard", transactionId: "4567890132", date: "2024-09-24 09:00 AM", amount: "+$300.00", note: "Quarterly stock dividend", status: "Completed" },
-  { id: 33, name: "Comcast Bill Payment", category: "Utilities", account: "Platinum Plus Visa", transactionId: "4567890123", date: "2024-09-24 10:30 AM", amount: "-$150.00", note: "Monthly internet and TV bill", status: "Completed" },
-  { id: 34, name: "Freelance Project", category: "Income", account: "Platinum Plus Visa", transactionId: "4567890137", date: "2024-09-23 01:30 PM", amount: "+$1,200.00", note: "Payment for freelance design work", status: "Completed" },
-  { id: 35, name: "Amazon Purchase", category: "Food & Dining", account: "Freedom Unlimited Mastercard", transactionId: "4567890142", date: "2024-09-23 03:45 PM", amount: "-$80.95", note: "Purchased kitchen appliances", status: "Completed" },
-  { id: 36, name: "Gym Membership", category: "Healthcare", account: "Platinum Plus Visa", transactionId: "5678901234", date: "2024-09-22 07:00 AM", amount: "-$45.00", note: "Monthly gym fee for health", status: "Pending" },
-  { id: 37, name: "Rental Income", category: "Freedom Unlimited Mastercard", account: "Platinum Plus Visa", transactionId: "6678975757", date: "2024-09-22 07:00 AM", amount: "+$2500", note: "Monthly Rent From Property", status: "Completed" },
-  { id: 38, name: "State Farm Insurance", category: "Freedom Unlimited Mastercard", account: "Freedom Unlimited Mastercard", transactionId: "5567890142", date: "2024-09-23 03:45 PM", amount: "-$80.95", note: "Insurance premium", status: "Completed" },
 ];
-
-const itemsPerPage = 10;
 
 export default function TransactionTable() {
   const [search, setSearch] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState("All Categories");
+  const [selectedAccount, setSelectedAccount] = useState("All Accounts");
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedTransactions, setSelectedTransactions] = useState([]);
 
   const filteredTransactions = transactions.filter(transaction =>
     transaction.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  const totalPages = Math.ceil(filteredTransactions.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = Math.min(startIndex + itemsPerPage, filteredTransactions.length);
-  const paginatedTransactions = filteredTransactions.slice(startIndex, endIndex);
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  const handleSelectTransaction = (id) => {
+    setSelectedTransactions((prev) =>
+      prev.includes(id) ? prev.filter((tid) => tid !== id) : [...prev, id]
+    );
   };
 
-  const handlePrevPage = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  const getTransactionIcon = (category) => {
+    switch (category) {
+      case "Income":
+        return <FaMoneyBillWave className="text-black text-xl rounded-full p-1 bg-green-300" />;
+      case "Investments":
+        return <FaChartLine className="text-black text-xl rounded-full p-1 bg-green-300" />;
+      default:
+        return null;
+    }
+  };
+
+  const getAccountIcon = (account) => {
+    if (account.includes("Visa")) return <FaCcVisa className="text-xl text-black" />;
+    if (account.includes("Mastercard")) return <FaCcMastercard className="text-xl text-black" />;
+    return null;
   };
 
   return (
     <>
-    <Header />
-    <Sidebar />
-    <div className="p-4 lg:p-6 lg:ml-44 mt-12 bg-gray-100 min-h-screen text-sm">
-      <div className="bg-white p-4 lg:p-6 rounded-lg shadow-lg">
-        
-        {/* Search & Download Button */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6">
-          <input
-            type="text"
-            placeholder="Search transaction..."
-            className="px-4 py-2 border border-gray-300 rounded-lg w-full sm:w-1/3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <div className="w-full sm:w-auto flex justify-end mt-3 sm:mt-0">
-            <button className="px-4 py-2 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg cursor-pointer hover:from-green-700 hover:to-green-800 flex items-center gap-2">
-              <FaDownload />
-              Download
-            </button>
-          </div>
-        </div>
+      <Header title="Transactions" />
+      <Sidebar />
+      <div className="p-4 lg:p-6 lg:ml-44 mt-12 min-h-screen text-sm">
+        <div className="bg-white p-4 lg:p-6 rounded-lg shadow-lg">
+          {/* Search, Dropdowns & Download Section */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 w-full">
+              {/* Search Input */}
+              <input
+                type="text"
+                placeholder="Search transaction..."
+                className="px-4 py-2 border border-gray-300 rounded-lg w-full sm:w-1/3 focus:outline-none focus:ring-2 focus:ring-green-500 transition-all"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
 
-        {/* Responsive Table Container */}
-        <div className="overflow-x-auto rounded-lg shadow-sm">
-          <table className="w-full min-w-[600px] bg-white">
-            <thead>
-              <tr className="bg-gradient-to-r from-green-600 to-green-700 text-white text-left">
-                <th className="py-3 px-4">Name</th>
-                <th className="py-3 px-4">Account</th>
-                <th className="py-3 px-4">ID</th>
-                <th className="py-3 px-4 text-center whitespace-nowrap">Date & Time</th>
-                <th className="py-3 px-4">Amount</th>
-                <th className="py-3 px-4">Note</th>
-                <th className="py-3 px-4">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {paginatedTransactions.map((transaction, index) => (
-                <tr
-                  key={transaction.id}
-                  className={`${
-                    index % 2 === 0 ? "bg-gray-50" : "bg-white"
-                  } hover:bg-gray-100 transition-all`}
+              {/* Category Dropdown */}
+              <select
+                className="px-4 py-2 border border-gray-300 rounded-lg w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-green-500"
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                <option>All Categories</option>
+                <option>Income</option>
+                <option>Investments</option>
+                <option>Utilities</option>
+                <option>Food & Dining</option>
+              </select>
+
+              {/* Account Dropdown */}
+              <select
+                className="px-4 py-2 border border-gray-300 rounded-lg w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-green-500"
+                value={selectedAccount}
+                onChange={(e) => setSelectedAccount(e.target.value)}
+              >
+                <option>All Accounts</option>
+                <option>Platinum Plus Visa</option>
+                <option>Freedom Unlimited Mastercard</option>
+              </select>
+            </div>
+
+            <div className="flex gap-2">
+              {/* Calendar Button */}
+              <div className="relative">
+                <DatePicker
+                  selected={selectedDate}
+                  onChange={(date) => setSelectedDate(date)}
+                  className="hidden"
+                />
+                <button
+                  onClick={() => document.querySelector(".react-datepicker__input-container input").click()}
+                  className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 flex items-center gap-2"
                 >
-                  <td className="py-3 px-4">{transaction.name}</td>
-                  <td className="py-3 px-4">{transaction.account}</td>
-                  <td className="py-3 px-4">{transaction.transactionId}</td>
-                  <td className="py-3 px-4 text-center whitespace-nowrap text-sm md:text-base">
-                    {transaction.date}
-                  </td>
-                  <td className={`py-3 px-4 font-medium ${
-                    transaction.amount.startsWith("-") ? "text-red-500" : "text-green-600"
-                  }`}>
-                    {transaction.amount}
-                  </td>
-                  <td className="py-3 px-4 text-gray-600">{transaction.note}</td>
-                  <td className="py-3 px-4">
-                    <span
-                      className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
-                        transaction.status === "Completed"
-                          ? "bg-green-100 text-green-700"
-                          : "bg-yellow-100 text-yellow-700"
-                      }`}
-                    >
-                      {transaction.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                  <FaCalendarAlt />
+                  {selectedDate ? selectedDate.toLocaleDateString() : "Select Date"}
+                </button>
+              </div>
 
-        {/* Pagination Controls */}
-        <div className="flex flex-col md:flex-row justify-between items-center mt-6 gap-4">
-          <span className="text-sm text-gray-700">
-            Showing {startIndex + 1} to {endIndex} of {filteredTransactions.length} entries
-          </span>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={handlePrevPage}
-              disabled={currentPage === 1}
-              className={`flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                currentPage === 1
-                  ? "bg-gray-200 text-gray-500 cursor-not-allowed"
-                  : "bg-green-600 text-white hover:bg-green-700"
-              }`}
-            >
-              <FaChevronLeft className="mr-2" />
-              Previous
-            </button>
-            <button
-              onClick={handleNextPage}
-              disabled={currentPage === totalPages}
-              className={`flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                currentPage === totalPages
-                  ? "bg-gray-200 text-gray-500 cursor-not-allowed"
-                  : "bg-green-600 text-white hover:bg-green-700"
-              }`}
-            >
-              Next
-              <FaChevronRight className="ml-2" />
-            </button>
+              {/* Download Button */}
+              <button className="px-3 py-2 bg-black text-white rounded-lg cursor-pointer hover:bg-gray-800 flex items-center gap-2 text-sm">
+                <FaDownload />
+                Download
+              </button>
+            </div>
+          </div>
+
+          {/* Table */}
+          <div className="overflow-x-auto rounded-lg shadow-sm">
+            <table className="w-full min-w-[600px] bg-white">
+              <thead>
+                <tr className="bg-gray-200 text-black font-light text-left">
+                  <th className="py-3 px-4"> </th>
+                  <th className="py-3 px-4">Transaction Name</th>
+                  <th className="py-3 px-4">Account</th>
+                  <th className="py-3 px-4">Transaction ID</th>
+                  <th className="py-3 px-4">Date & Time</th>
+                  <th className="py-3 px-4 text-center">Amount</th>
+                  <th className="py-3 px-4">Note</th>
+                  <th className="py-3 px-4">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredTransactions.map((transaction, index) => (
+                  <tr
+                    key={transaction.id}
+                    className={`${index % 2 === 0 ? "bg-gray-50" : "bg-white"} hover:bg-gray-100 transition-all`}
+                  >
+                    {/* Checkbox */}
+                    <td className="py-3 px-4">
+                      <input
+                        type="checkbox"
+                        checked={selectedTransactions.includes(transaction.id)}
+                        onChange={() => handleSelectTransaction(transaction.id)}
+                      />
+                    </td>
+
+                    {/* Name + Category Icon */}
+                    <td className="py-3 px-4 flex items-center gap-2">
+                      {getTransactionIcon(transaction.category)}
+                      <span className="text-blue-500 font-medium">{transaction.name}</span>
+                    </td>
+
+                    {/* Account + Logo */}
+                    <td className="py-3 px-4 flex items-center gap-2">
+                      {getAccountIcon(transaction.account)}
+                      <span>{transaction.account}</span>
+                    </td>
+
+                    {/* Transaction ID */}
+                    <td className="py-3 px-4">{transaction.transactionId}</td>
+
+                    {/* Date & Time */}
+                    <td className="py-3 px-4">{transaction.date}</td>
+
+                    {/* Amount */}
+                    <td className={`py-3 px-4 font-medium text-center ${transaction.amount.startsWith("-") ? "text-red-500" : "text-green-600"}`}>
+                      {transaction.amount}
+                    </td>
+
+                    {/* Note */}
+                    <td className="py-3 px-4 text-gray-600">{transaction.note}</td>
+
+                    {/* Status Label */}
+                    <td className="py-3 px-4">
+                      <span className="bg-green-800 text-white text-xs px-3 py-1 rounded-full">
+                        {transaction.status}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-    </div>
-  </>
+    </>
   );
 }
