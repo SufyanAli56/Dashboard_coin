@@ -69,7 +69,8 @@ export default function TransactionTable() {
 
   return (
     <>
-      <Header />
+     <Header title="Transactions" />
+
       <Sidebar />
       <div className="p-6 ml-44 mt-12 bg-gray-100 min-h-screen">
         <div className="bg-white p-4 rounded-lg shadow-md">
