@@ -91,7 +91,7 @@ export default function TransactionTable() {
             <table className="min-w-full bg-white border border-gray-200">
               <thead className="bg-gray-100">
                 <tr>
-                  <th className="py-2 px-4 border">Name</th>
+                  <th className="py-2 px-4 border">Transaction Name</th>
                   <th className="py-2 px-4 border">Account</th>
                   <th className="py-2 px-4 border">Transaction ID</th>
                   <th className="py-2 px-4 border">Date & Time</th>
