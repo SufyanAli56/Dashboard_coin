@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import { FaBolt, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaDownload , FaCcVisa  } from "react-icons/fa";
 
 const transactions = [
   { id: 1, name: "Bonus Payment", category: "Income", account: "Platinum Plus Visa", transactionId: "4567890135", date: "2024-09-25 11:00 AM", amount: "+$500.00", note: "Annual performance bonus", status: "Completed" },
@@ -69,93 +69,113 @@ export default function TransactionTable() {
 
   return (
     <>
-     <Header title="Transactions" />
-
-      <Sidebar />
-      <div className="p-6 ml-44 mt-12 bg-gray-100 min-h-screen">
-        <div className="bg-white p-4 rounded-lg shadow-md">
-          <div className="flex justify-between items-center mb-4">
-            <input
-              type="text"
-              placeholder="Search transaction"
-              className="px-4 py-2 border rounded-lg w-1/3 focus:outline-none focus:ring-2 focus:ring-green-500"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+    <Header />
+    <Sidebar />
+    <div className="p-4 lg:p-6 lg:ml-44 mt-12 bg-gray-100 min-h-screen text-sm">
+      <div className="bg-white p-4 lg:p-6 rounded-lg shadow-lg">
+        
+        {/* Search & Download Button */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6">
+          <input
+            type="text"
+            placeholder="Search transaction..."
+            className="px-4 py-2 border border-gray-300 rounded-lg w-full sm:w-1/3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <div className="w-full sm:w-auto flex justify-end mt-3 sm:mt-0">
+            <button className="px-4 py-2 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg cursor-pointer hover:from-green-700 hover:to-green-800 flex items-center gap-2">
+              <FaDownload />
               Download
             </button>
           </div>
+        </div>
 
-          <div className="overflow-x-auto">
-            <table className="min-w-full bg-white border border-gray-200">
-              <thead className="bg-gray-100">
-                <tr>
-                  <th className="py-2 px-4 border">Transaction Name</th>
-                  <th className="py-2 px-4 border">Account</th>
-                  <th className="py-2 px-4 border">Transaction ID</th>
-                  <th className="py-2 px-4 border">Date & Time</th>
-                  <th className="py-2 px-4 border">Amount</th>
-                  <th className="py-2 px-4 border">Note</th>
-                  <th className="py-2 px-4 border">Status</th>
+        {/* Responsive Table Container */}
+        <div className="overflow-x-auto rounded-lg shadow-sm">
+          <table className="w-full min-w-[600px] bg-white">
+            <thead>
+              <tr className="bg-gradient-to-r from-green-600 to-green-700 text-white text-left">
+                <th className="py-3 px-4">Name</th>
+                <th className="py-3 px-4">Account</th>
+                <th className="py-3 px-4">ID</th>
+                <th className="py-3 px-4 text-center whitespace-nowrap">Date & Time</th>
+                <th className="py-3 px-4">Amount</th>
+                <th className="py-3 px-4">Note</th>
+                <th className="py-3 px-4">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {paginatedTransactions.map((transaction, index) => (
+                <tr
+                  key={transaction.id}
+                  className={`${
+                    index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                  } hover:bg-gray-100 transition-all`}
+                >
+                  <td className="py-3 px-4">{transaction.name}</td>
+                  <td className="py-3 px-4">{transaction.account}</td>
+                  <td className="py-3 px-4">{transaction.transactionId}</td>
+                  <td className="py-3 px-4 text-center whitespace-nowrap text-sm md:text-base">
+                    {transaction.date}
+                  </td>
+                  <td className={`py-3 px-4 font-medium ${
+                    transaction.amount.startsWith("-") ? "text-red-500" : "text-green-600"
+                  }`}>
+                    {transaction.amount}
+                  </td>
+                  <td className="py-3 px-4 text-gray-600">{transaction.note}</td>
+                  <td className="py-3 px-4">
+                    <span
+                      className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
+                        transaction.status === "Completed"
+                          ? "bg-green-100 text-green-700"
+                          : "bg-yellow-100 text-yellow-700"
+                      }`}
+                    >
+                      {transaction.status}
+                    </span>
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {paginatedTransactions.map((transaction) => (
-                  <tr key={transaction.id} className="text-center border-b">
-                    <td className="py-2 px-4 border">{transaction.name}</td>
-                    <td className="py-2 px-4 border">{transaction.account}</td>
-                    <td className="py-2 px-4 border">{transaction.transactionId}</td>
-                    <td className="py-2 px-4 border">{transaction.date}</td>
-                    <td className={`py-2 px-4 border ${transaction.amount.startsWith("-") ? "text-red-500" : "text-green-500"}`}>
-                      {transaction.amount}
-                    </td>
-                    <td className="py-2 px-4 border">{transaction.note}</td>
-                    <td className="py-2 px-4 border">
-                      <span className={`px-3 py-1 rounded-full text-white text-xs ${transaction.status === "Completed" ? "bg-green-500" : "bg-yellow-500"}`}>
-                        {transaction.status}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-          {/* Improved Pagination Controls */}
-          <div className="flex justify-between items-center mt-6">
-            <span className="text-sm text-gray-700">
-              Showing {startIndex + 1} to {endIndex} of {filteredTransactions.length} entries
-            </span>
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={handlePrevPage}
-                disabled={currentPage === 1}
-                className={`flex items-center px-4 py-2 rounded-lg text-sm font-medium ${
-                  currentPage === 1
-                    ? "bg-gray-200 text-gray-500 cursor-not-allowed"
-                    : "bg-green-600 text-white hover:bg-green-700"
-                }`}
-              >
-                <FaChevronLeft className="mr-2" />
-                Previous
-              </button>
-              <button
-                onClick={handleNextPage}
-                disabled={currentPage === totalPages}
-                className={`flex items-center px-4 py-2 rounded-lg text-sm font-medium ${
-                  currentPage === totalPages
-                    ? "bg-gray-200 text-gray-500 cursor-not-allowed"
-                    : "bg-green-600 text-white hover:bg-green-700"
-                }`}
-              >
-                Next
-                <FaChevronRight className="ml-2" />
-              </button>
-            </div>
+        {/* Pagination Controls */}
+        <div className="flex flex-col md:flex-row justify-between items-center mt-6 gap-4">
+          <span className="text-sm text-gray-700">
+            Showing {startIndex + 1} to {endIndex} of {filteredTransactions.length} entries
+          </span>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+              className={`flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                currentPage === 1
+                  ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+                  : "bg-green-600 text-white hover:bg-green-700"
+              }`}
+            >
+              <FaChevronLeft className="mr-2" />
+              Previous
+            </button>
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              className={`flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                currentPage === totalPages
+                  ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+                  : "bg-green-600 text-white hover:bg-green-700"
+              }`}
+            >
+              Next
+              <FaChevronRight className="ml-2" />
+            </button>
           </div>
         </div>
       </div>
-    </>
+    </div>
+  </>
   );
 }
