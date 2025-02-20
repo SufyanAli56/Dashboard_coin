@@ -21,7 +21,11 @@ const Sidebar = () => {
     { icon: <LuArrowLeftRight />, label: "Transaction", path: "/Transaction" },
     { icon: <IoFileTrayFullOutline />, label: "Invoices", path: "/invoices" },
     { icon: <BsCardHeading />, label: "Cards", path: "/cards" },
-    { icon: <BsFillSuitDiamondFill />, label: "Investments", path: "/investments" },
+    {
+      icon: <BsFillSuitDiamondFill />,
+      label: "Investments",
+      path: "/investments",
+    },
     { icon: <LiaIdCardSolid />, label: "Insights", path: "/insights" },
     { icon: <VscSettingsGear />, label: "Promos", path: "/promos" },
   ];
@@ -46,11 +50,15 @@ const Sidebar = () => {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2">
               <img src={Logo} alt="Logo" className="h-6 w-6" />
-              <h2 className="text-lg font-semibold sm:block hidden lg:block">
-                Coinest
-              </h2>
+              <h2 className="text-lg font-semibold sm:block md:hidden lg:block">
+  Coinest
+</h2>
+
             </div>
-            <button onClick={() => setIsSidebarOpen(false)} className="md:hidden">
+            <button
+              onClick={() => setIsSidebarOpen(false)}
+              className="md:hidden"
+            >
               ✕
             </button>
           </div>
@@ -116,7 +124,7 @@ const Sidebar = () => {
                   Inbox
                 </span>
               </div>
-              <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">
+              <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full hidden md:hidden lg:inline-block">
                 99+
               </span>
             </Link>
