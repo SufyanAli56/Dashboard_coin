@@ -1,33 +1,46 @@
 import { useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import { 
-  FaChevronLeft, 
-  FaChevronRight, 
-  FaDownload, 
-  FaCalendarAlt, 
-  FaMoneyBillWave, 
-  FaChartLine, 
-  FaCcVisa, 
-  FaCcMastercard 
-} from "react-icons/fa";
+import { FaMoneyBillWave, FaChartLine, FaCcVisa, FaCcMastercard } from "react-icons/fa";
 
-const transactions = [
-  { id: 1, name: "Bonus Payment", category: "Income", account: "Platinum Plus Visa", transactionId: "4567890135", date: "2024-09-25 11:00 AM", amount: "+$500.00", note: "Annual performance bonus", status: "Completed" },
-  { id: 2, name: "Stock Dividends", category: "Investments", account: "Freedom Unlimited Mastercard", transactionId: "4567890132", date: "2024-09-24 09:00 AM", amount: "+$300.00", note: "Quarterly stock dividend", status: "Completed" },
-];
+const generateTransactions = (num) => {
+  const categories = ["Income", "Investments", "Utilities", "Food & Dining", "Healthcare"];
+  const accounts = ["Platinum Plus Visa", "Freedom Unlimited Mastercard"];
+  const names = ["Bonus Payment", "Stock Dividends", "Bill Payment", "Freelance Work", "Amazon Purchase", "Gym Membership"];
+  const statuses = ["Completed", "Pending"];
+
+  return Array.from({ length: num }, (_, index) => {
+    const amount = (Math.random() * 2000 - 500).toFixed(2);
+    return {
+      id: index + 1,
+      name: names[Math.floor(Math.random() * names.length)],
+      category: categories[Math.floor(Math.random() * categories.length)],
+      account: accounts[Math.floor(Math.random() * accounts.length)],
+      transactionId: Math.floor(1000000000 + Math.random() * 9000000000).toString(),
+      date: `2024-09-${Math.floor(Math.random() * 30 + 1)} ${Math.floor(Math.random() * 12 + 1)}:00 AM`,
+      amount: amount,
+      note: "Generated Transaction",
+      status: statuses[Math.floor(Math.random() * statuses.length)],
+    };
+  });
+};
+
+const transactions = generateTransactions(100);
+const ITEMS_PER_PAGE = 15;
 
 export default function TransactionTable() {
   const [search, setSearch] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All Categories");
-  const [selectedAccount, setSelectedAccount] = useState("All Accounts");
-  const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTransactions, setSelectedTransactions] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const filteredTransactions = transactions.filter(transaction =>
+  const filteredTransactions = transactions.filter((transaction) =>
     transaction.name.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const totalPages = Math.ceil(filteredTransactions.length / ITEMS_PER_PAGE);
+  const paginatedTransactions = filteredTransactions.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
   );
 
   const handleSelectTransaction = (id) => {
@@ -39,9 +52,9 @@ export default function TransactionTable() {
   const getTransactionIcon = (category) => {
     switch (category) {
       case "Income":
-        return <FaMoneyBillWave className="text-black text-xl rounded-full p-1 bg-green-300" />;
+        return <FaMoneyBillWave className="text-black text-xl bg-green-300 rounded-full p-1" />;
       case "Investments":
-        return <FaChartLine className="text-black text-xl rounded-full p-1 bg-green-300" />;
+        return <FaChartLine className="text-black text-xl bg-green-300 rounded-full p-1" />;
       default:
         return null;
     }
@@ -58,91 +71,34 @@ export default function TransactionTable() {
       <Header title="Transactions" />
       <Sidebar />
       <div className="p-4 lg:p-6 lg:ml-44 mt-12 min-h-screen text-sm">
+        <div className="flex justify-between items-center mb-4">
+          <button className="px-4 py-2 bg-green-500 text-white rounded">Download</button>
+          <input type="date" className="border px-3 py-2 rounded" />
+        </div>
         <div className="bg-white p-4 lg:p-6 rounded-lg shadow-lg">
-          {/* Search, Dropdowns & Download Section */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 w-full">
-              {/* Search Input */}
-              <input
-                type="text"
-                placeholder="Search transaction..."
-                className="px-4 py-2 border border-gray-300 rounded-lg w-full sm:w-1/3 focus:outline-none focus:ring-2 focus:ring-green-500 transition-all"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-
-              {/* Category Dropdown */}
-              <select
-                className="px-4 py-2 border border-gray-300 rounded-lg w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-green-500"
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-              >
-                <option>All Categories</option>
-                <option>Income</option>
-                <option>Investments</option>
-                <option>Utilities</option>
-                <option>Food & Dining</option>
-              </select>
-
-              {/* Account Dropdown */}
-              <select
-                className="px-4 py-2 border border-gray-300 rounded-lg w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-green-500"
-                value={selectedAccount}
-                onChange={(e) => setSelectedAccount(e.target.value)}
-              >
-                <option>All Accounts</option>
-                <option>Platinum Plus Visa</option>
-                <option>Freedom Unlimited Mastercard</option>
-              </select>
-            </div>
-
-            <div className="flex gap-2">
-              {/* Calendar Button */}
-              <div className="relative">
-                <DatePicker
-                  selected={selectedDate}
-                  onChange={(date) => setSelectedDate(date)}
-                  className="hidden"
-                />
-                <button
-                  onClick={() => document.querySelector(".react-datepicker__input-container input").click()}
-                  className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 flex items-center gap-2"
-                >
-                  <FaCalendarAlt />
-                  {selectedDate ? selectedDate.toLocaleDateString() : "Select Date"}
-                </button>
-              </div>
-
-              {/* Download Button */}
-              <button className="px-3 py-2 bg-black text-white rounded-lg cursor-pointer hover:bg-gray-800 flex items-center gap-2 text-sm">
-                <FaDownload />
-                Download
-              </button>
-            </div>
-          </div>
-
-          {/* Table */}
-          <div className="overflow-x-auto rounded-lg shadow-sm">
+          <input
+            type="text"
+            placeholder="Search transaction..."
+            className="px-3 py-2 border rounded-full border-gray-300 bg-gray-200 w-full sm:w-1/3 text-sm focus:ring-2 focus:ring-green-300"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <div className="overflow-x-auto rounded-lg shadow-sm mt-4">
             <table className="w-full min-w-[600px] bg-white">
               <thead>
-                <tr className="bg-gray-200 text-black font-light text-left">
-                  <th className="py-3 px-4"> </th>
+                <tr className="bg-gray-200 text-gray-700 text-left">
+                  <th className="py-3 px-4">Select</th>
                   <th className="py-3 px-4">Transaction Name</th>
                   <th className="py-3 px-4">Account</th>
                   <th className="py-3 px-4">Transaction ID</th>
                   <th className="py-3 px-4">Date & Time</th>
-                  <th className="py-3 px-4 text-center">Amount</th>
-                  <th className="py-3 px-4">Note</th>
+                  <th className="py-3 px-4">Amount</th>
                   <th className="py-3 px-4">Status</th>
                 </tr>
               </thead>
               <tbody>
-                {filteredTransactions.map((transaction, index) => (
-                  <tr
-                    key={transaction.id}
-                    className={`${index % 2 === 0 ? "bg-gray-50" : "bg-white"} hover:bg-gray-100 transition-all`}
-                  >
-                    {/* Checkbox */}
+                {paginatedTransactions.map((transaction, index) => (
+                  <tr key={transaction.id} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
                     <td className="py-3 px-4">
                       <input
                         type="checkbox"
@@ -150,43 +106,26 @@ export default function TransactionTable() {
                         onChange={() => handleSelectTransaction(transaction.id)}
                       />
                     </td>
-
-                    {/* Name + Category Icon */}
                     <td className="py-3 px-4 flex items-center gap-2">
                       {getTransactionIcon(transaction.category)}
                       <span className="text-blue-500 font-medium">{transaction.name}</span>
                     </td>
-
-                    {/* Account + Logo */}
-                    <td className="py-3 px-4 flex items-center gap-2">
-                      {getAccountIcon(transaction.account)}
-                      <span>{transaction.account}</span>
-                    </td>
-
-                    {/* Transaction ID */}
+                    <td className="py-3 px-4">{getAccountIcon(transaction.account)} {transaction.account}</td>
                     <td className="py-3 px-4">{transaction.transactionId}</td>
-
-                    {/* Date & Time */}
                     <td className="py-3 px-4">{transaction.date}</td>
-
-                    {/* Amount */}
-                    <td className={`py-3 px-4 font-medium text-center ${transaction.amount.startsWith("-") ? "text-red-500" : "text-green-600"}`}>
-                      {transaction.amount}
+                    <td className={`py-3 px-4 font-medium text-center ${parseFloat(transaction.amount) >= 0 ? "text-green-600" : "text-red-600"}`}>
+                      {parseFloat(transaction.amount) >= 0 ? "+" : "-"}${Math.abs(transaction.amount)}
                     </td>
-
-                    {/* Note */}
-                    <td className="py-3 px-4 text-gray-600">{transaction.note}</td>
-
-                    {/* Status Label */}
-                    <td className="py-3 px-4">
-                      <span className="bg-green-800 text-white text-xs px-3 py-1 rounded-full">
-                        {transaction.status}
-                      </span>
-                    </td>
+                    <td className={`py-3 px-4 font-medium ${transaction.status === "Completed" ? "text-green-600" : "text-red-600"}`}>{transaction.status}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
+          </div>
+          <div className="flex justify-center items-center mt-4 space-x-2">
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button key={i + 1} onClick={() => setCurrentPage(i + 1)} className={`px-3 py-1 rounded ${currentPage === i + 1 ? "bg-green-500 text-white" : "bg-gray-300"}`}>{i + 1}</button>
+            ))}
           </div>
         </div>
       </div>
