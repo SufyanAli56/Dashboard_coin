@@ -14,12 +14,8 @@ const App = () => {
             <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/Transaction" element={<Transaction />} />
-<<<<<<< HEAD
             <Route path="/invoices" element={<Invoices  />} />
-=======
             <Route path="/Cards" element={<Cards />} />
-
->>>>>>> 120bfba44bf3ba36cbe54c7882eb0244e9d6e6df
             </Routes>
 
           </div>
