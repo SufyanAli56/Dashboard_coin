@@ -3,6 +3,7 @@ import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { FaMoneyBillWave, FaChartLine, FaCcVisa, FaCcMastercard } from "react-icons/fa";
 
+
 const generateTransactions = (num) => {
   const categories = ["Income", "Investments", "Utilities", "Food & Dining", "Healthcare"];
   const accounts = ["Platinum Plus Visa", "Freedom Unlimited Mastercard"];
@@ -129,6 +130,7 @@ export default function TransactionTable() {
           </div>
         </div>
       </div>
+   
     </>
   );
 }
