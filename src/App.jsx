@@ -8,6 +8,7 @@ import Promos from "./Ui/Promos/Promos";
 
 import Insights from "./Ui/Insights/Insights";
 import Inbox from "./Ui/Inbox/Inbox";
+import Insights_Main from "./Ui/Insights/Insights_Main";
 
 
 
@@ -22,10 +23,8 @@ const App = () => {
             <Route path="/invoices" element={<Invoices  />} />
             <Route path="/Cards" element={<Cards />} />
             <Route path="/Promos" element={<Promos  />} />
-
+            <Route path="/Insights_Main" element={<Insights_Main  />} />
             <Route path="/Insights" element={<Insights  />} />
-
-
             <Route path="/inbox" element={<Inbox  />} />
 
  
