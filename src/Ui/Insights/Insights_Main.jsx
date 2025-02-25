@@ -67,25 +67,17 @@ const Insights_Main = () => {
   ];
 
   return (
-    <div className="flex min-h-screen bg-green-50">
+    <div className="flex min-h-screen ">
       <Sidebar />
       <div className="flex-1">
         <Header />
 
         {/* Main Content */}
-        <div className="p-4 mt-20 ml-44 md:p-6">
-          {/* Search Bar */}
-          <div className="bg-white p-3 rounded-lg shadow-md flex items-center space-x-3">
-            <FaSearch className="text-gray-500" />
-            <input
-              type="text"
-              placeholder="Search article you want"
-              className="w-full outline-none bg-transparent text-gray-700"
-            />
-          </div>
+        <div className="p-4 mt-14 ml-44 md:p-6">
+        
 
           {/* Filters */}
-          <div className="flex flex-wrap gap-2 mt-4">
+          <div className="flex flex-wrap gap-2">
             {["All", "Stock Market", "Cryptocurrency", "Tax Planning", "Real Estate Investment", "Retirement", "Sustainable Investing", "Investment Strategies"].map((filter, index) => (
               <button key={index} className={`px-4 py-2 rounded-full text-sm font-semibold ${index === 0 ? "bg-green-600 text-white" : "bg-gray-200 text-gray-700"}`}>
                 {filter}
@@ -97,7 +89,7 @@ const Insights_Main = () => {
           <h2 className="text-xl font-semibold text-gray-800 mt-6">Featured Articles</h2>
           <div className="flex flex-wrap gap-6 mt-3">
             {featuredArticles.map((article, index) => (
-              <div key={index} className="w-full md:w-[48%] bg-white p-4 rounded-lg shadow-sm">
+              <div key={index} className="w-full md:w-[48%] bg-gray-50 p-4 rounded-lg shadow-sm">
                 <div className="h-40 bg-gray-300 rounded-lg mb-3"></div>
                 <p className="text-xs text-gray-500">{article.category} • {article.date}</p>
                 <h3 className="text-lg font-medium text-gray-800 mt-1">{article.title}</h3>
@@ -111,7 +103,7 @@ const Insights_Main = () => {
           <h2 className="text-xl font-semibold text-gray-800 mt-6">Recent Articles</h2>
           <div className="flex flex-col gap-4 mt-3">
             {recentArticles.map((article, index) => (
-              <div key={index} className="flex items-center bg-white p-3 rounded-lg shadow-sm">
+              <div key={index} className="flex items-center bg-gray-50 p-3 rounded-lg shadow-sm">
                 <div className="h-16 w-16 bg-gray-300 rounded-md"></div>
                 <div className="ml-4">
                   <p className="text-xs text-gray-500">{article.category} • {article.date}</p>
@@ -126,7 +118,7 @@ const Insights_Main = () => {
           <h2 className="text-xl font-semibold text-gray-800 mt-6">Popular Insights</h2>
           <div className="flex flex-wrap gap-6 mt-3">
             {popularInsights.map((article, index) => (
-              <div key={index} className="w-full md:w-[48%] bg-white p-4 rounded-lg shadow-sm">
+              <div key={index} className="w-full md:w-[48%] bg-gray-50 p-4 rounded-lg shadow-sm">
                 <div className="h-24 bg-gray-300 rounded-md mb-3"></div>
                 <p className="text-xs text-gray-500">{article.category} • {article.date}</p>
                 <h3 className="text-sm font-medium text-gray-800 mt-1">{article.title}</h3>
