@@ -26,7 +26,7 @@ const Sidebar = () => {
       label: "Investments",
       path: "/investments",
     },
-    { icon: <LiaIdCardSolid />, label: "Insights", path: "/insights" },
+    { icon: <LiaIdCardSolid />, label: "Insights", path: "/Insights_Main" },
     { icon: <VscSettingsGear />, label: "Promos", path: "/Promos" },
   ];
 
