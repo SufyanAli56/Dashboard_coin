@@ -26,9 +26,9 @@ const Dashboard = () => {
     <>
       <Header title="Dashboard" />
       <Sidebar />
-      <div className="p-4 lg:p-6 lg:ml-44 mt-12 min-h-screen text-sm flex gap-6">
+      <div className="p-4 lg:p-6 lg:ml-44 mt-12 min-h-screen text-sm flex flex-col lg:flex-row gap-6">
         {/* Left Side - Balance Card */}
-        <div className="bg-[#194942] w-80 h-52 rounded-xl p-4 shadow-lg text-white relative">
+        <div className="bg-[#194942]  sm:w-80 w-70  h-44 rounded-xl p-4 shadow-lg text-white relative">
           <div className="flex justify-between items-center">
             <img src={Logo} alt="Logo" className="w-8 h-8" />
             <img src={Union} alt="Union" className="w-8 h-8" />
@@ -38,63 +38,44 @@ const Dashboard = () => {
             <p className="text-gray-300 text-sm">Balance Amount</p>
             <h3 className="text-2xl font-bold">$562,000</h3>
           </div>
-          <div className="flex justify-between items-center mt-4 text-gray-300 text-xs">
-            <div>
-              <p>EXP</p>
-              <h3 className="text-white font-semibold text-sm">11/29</h3>
-            </div>
-            <div>
-              <p>CVV</p>
-              <h3 className="text-white font-semibold text-sm">323</h3>
-            </div>
-          </div>
         </div>
 
-        {/* Right Side - Income, Expense, Savings Cards */}
-        <div className="grid grid-cols-3 gap-6">
+        {/* Right Side - Cards in Row for Large Screens */}
+        <div className="flex flex-wrap lg:flex-nowrap gap-6 w-full">
           {/* Income Card */}
-          <div className="bg-white w-44 h-40 rounded-xl p-4 shadow-lg flex flex-col justify-between">
+          <div className="bg-white flex-1 min-w-[160px] h-34 rounded-xl p-4 shadow-lg flex flex-col">
             <div className="flex justify-between items-center">
-              <div className="bg-gray-100 p-2 rounded-full">
-                <HiCurrencyDollar className="w-6 h-6" />
-              </div>
+              <HiCurrencyDollar className="w-6 h-6 bg-gray-100 p-2 rounded-full" />
               <span className="bg-green-200 px-3 py-1 rounded-full flex items-center gap-1">
                 <FaArrowTrendUp />
                 +1.78%
               </span>
-              <BsThreeDotsVertical className="text-gray-500 cursor-pointer" />
             </div>
             <h3 className="text-2xl font-bold">$78,000</h3>
             <p className="text-gray-500 text-sm">Total Income</p>
           </div>
 
           {/* Expense Card */}
-          <div className="bg-white w-44 h-40 rounded-xl p-4 shadow-lg flex flex-col justify-between">
+          <div className="bg-white flex-1 h-34 min-w-[200px] rounded-xl p-4 shadow-lg flex flex-col">
             <div className="flex justify-between items-center">
-              <div className="bg-gray-100 p-2 rounded-full">
-                <HiCurrencyDollar className="w-6 h-6" />
-              </div>
+              <HiCurrencyDollar className="w-6 h-6 bg-gray-100 p-2 rounded-full" />
               <span className="bg-red-300 px-3 py-1 rounded-full flex items-center gap-1">
                 <IoTrendingDown />
                 -1.78%
               </span>
-              <BsThreeDotsVertical className="text-gray-500 cursor-pointer" />
             </div>
             <h3 className="text-2xl font-bold">$43,000</h3>
             <p className="text-gray-500 text-sm">Total Expense</p>
           </div>
 
           {/* Savings Card */}
-          <div className="bg-white w-44 h-40 rounded-xl p-4 shadow-lg flex flex-col justify-between">
+          <div className="bg-white h-34 flex-1 min-w-[200px] rounded-xl p-4 shadow-lg flex flex-col">
             <div className="flex justify-between items-center">
-              <div className="bg-gray-100 p-2 rounded-full">
-                <FaRegFolderClosed className="w-6 h-6" />
-              </div>
+              <FaRegFolderClosed className="w-6 h-6 bg-gray-100 p-2 rounded-full" />
               <span className="bg-green-300 px-3 py-1 rounded-full flex items-center gap-1">
                 <FaArrowTrendUp />
                 +1.28%
               </span>
-              <BsThreeDotsVertical className="text-gray-500 cursor-pointer" />
             </div>
             <h3 className="text-2xl font-bold">$56,000</h3>
             <p className="text-gray-500 text-sm">Total Savings</p>
@@ -102,7 +83,7 @@ const Dashboard = () => {
         </div>
 
         {/* Statistics Section with Pie Chart */}
-        <div className="border border-gray-300 w-80 rounded-xl p-4 shadow-sm bg-white">
+        <div className="border border-gray-300 w-full h-140 sm:w-96 rounded-xl p-4 shadow-sm bg-white">
           {/* Header */}
           <div className="flex justify-between items-center">
             <h3 className="text-lg font-semibold text-gray-700">Statistic</h3>
@@ -113,7 +94,7 @@ const Dashboard = () => {
           </div>
 
           {/* Income & Expense Summary */}
-          <div className="flex justify-between text-gray-600 text-sm mt-2">
+          <div className="flex mt-8 justify-between text-gray-600 text-sm">
             <span>Income <strong>($4,800)</strong></span>
             <span className="text-green-600">Expense <strong>($3,500)</strong></span>
           </div>
@@ -121,7 +102,7 @@ const Dashboard = () => {
 
           {/* Pie Chart */}
           <div className="flex flex-col items-center mt-6">
-            <ResponsiveContainer width={200} height={200}>
+            <ResponsiveContainer width="100%" height={200}>
               <PieChart>
                 <Pie data={data} dataKey="value" cx="50%" cy="50%" innerRadius={50} outerRadius={80}>
                   {data.map((entry, index) => (
