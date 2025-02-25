@@ -3,6 +3,7 @@ import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Cards_Left from "../../components/Cards_Left/Cards_Left";
 
+
 const Cards = () => {
   
 
@@ -20,6 +21,7 @@ const Cards = () => {
 
         {/* Cards Left Section */}
         <Cards_Left />
+        
       </div>
     </>
   );
