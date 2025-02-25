@@ -22,149 +22,231 @@ const Inbox = () => {
   const [selectedMessage, setSelectedMessage] = useState(null);
   const [starred, setStarred] = useState({});
   const emails = [
-    { 
-      id: 1, sender: "Bank Alerts", subject: "Account Security Update", date: "Feb 18", time: "9:15 AM", 
+    {
+      id: 1,
+      sender: "Bank Alerts",
+      subject: "Account Security Update",
+      date: "Feb 18",
+      time: "9:15 AM",
       content: `Dear Customer,
   
-      We take your security seriously, and as part of our commitment to protecting your account, we have recently updated our security policies. 
-      Your account security is our top priority, and we have implemented a series of new measures to prevent unauthorized access, detect fraud, and ensure that your personal data remains safe. 
-      To keep your account secure, we highly recommend that you:
-      
+      We take your security seriously, and as part of our commitment to protecting your account, we have recently updated our security policies.
+      Your account security is our top priority, and we have implemented a series of new measures to prevent unauthorized access, detect fraud, and ensure that your personal data remains safe.
+  
       - Enable two-factor authentication (2FA) for an added layer of security.
       - Update your password regularly and avoid using easily guessable passwords.
       - Be cautious when clicking links in emails or messages that appear suspicious.
       - Review your recent login activity in your account settings.
-      
-      If you notice any suspicious activity, please contact our support team immediately. 
+  
+      If you notice any suspicious activity, please contact our support team immediately.
   
       Thank you for banking with us.
   
-      Best regards,  
-      The Security Team`
+      Best regards,
+      The Security Team`,
     },
-    { 
-      id: 2, sender: "Finance Team", subject: "Successful Transfer Completed", date: "Feb 18", time: "10:30 AM",
+    {
+      id: 2,
+      sender: "Finance Team",
+      subject: "Successful Transfer Completed",
+      date: "Feb 18",
+      time: "10:30 AM",
       content: `Hello,
   
-      We are pleased to inform you that your recent transfer has been successfully processed. Below are the details of your transaction:
+      Your recent transfer has been successfully processed. Below are the details of your transaction:
       
-      - **Amount Transferred:** $5,000  
-      - **Recipient Name:** John Doe  
-      - **Account Number:** **** **** 1234  
-      - **Transaction ID:** TRX987654321  
-      - **Date:** February 18, 2025  
-      - **Time:** 10:30 AM  
-  
-      If you did not authorize this transaction or notice any discrepancies, please reach out to our support team immediately. Our fraud detection system is constantly monitoring for unusual activities to ensure your account remains safe.  
-  
-      Thank you for choosing our services.
-  
-      Best,  
-      The Finance Team`
+      - Amount Transferred: $5,000  
+      - Recipient Name: John Doe  
+      - Account Number: **** **** 1234  
+      - Transaction ID: TRX987654321  
+      - Date: February 18, 2025  
+      - Time: 10:30 AM`,
     },
-    { 
-      id: 3, sender: "Support", subject: "Scheduled Maintenance Reminder", date: "Feb 17", time: "3:00 PM", 
+    {
+      id: 3,
+      sender: "Support",
+      subject: "Scheduled Maintenance Reminder",
+      date: "Feb 17",
+      time: "3:00 PM",
       content: `Dear Valued Customer,
   
-      We would like to inform you about a scheduled maintenance update to improve our systems and ensure a better experience for you.  
+      We would like to inform you about a scheduled maintenance update to improve our systems.
   
-      **Maintenance Details:**  
-      - **Date:** February 20, 2025  
-      - **Time:** 2:00 AM – 6:00 AM (UTC)  
-      - **Services Affected:** Online banking, mobile app transactions, and account statements  
+      - Date: February 20, 2025  
+      - Time: 2:00 AM – 6:00 AM (UTC)  
+      - Services Affected: Online banking, mobile app transactions, and account statements
   
-      During this time, access to certain services may be temporarily unavailable. We apologize for any inconvenience and appreciate your patience while we work to enhance our system’s reliability and performance.  
-  
-      If you have any urgent transactions to complete, we encourage you to do so before the maintenance period.  
-  
-      Thank you for your understanding.  
+      Thank you for your patience.
   
       Best Regards,  
-      Customer Support Team`
+      Customer Support Team`,
     },
-    { 
-      id: 4, sender: "The Career Team", subject: "New Feature: Advanced Budgeting Tools", date: "Feb 16", time: "12:45 PM",
-      content: `Hello,
+    {
+      id: 4,
+      sender: "HR Department",
+      subject: "Job Interview Scheduled",
+      date: "Feb 16",
+      time: "1:00 PM",
+      content: `Dear Candidate,
   
-      We’re excited to announce the launch of our new Advanced Budgeting Tools! Designed to give you greater control over your finances, this feature helps you track your income, categorize expenses, and set financial goals with ease.
+      We are pleased to inform you that your interview has been scheduled.
   
-      **Key Features Include:**
-      
-      - **Smart Budget Categories:** Your spending is now automatically sorted into categories such as Rent, Groceries, Transportation, and Entertainment, helping you analyze where your money goes.
-      - **Spending Limits:** Set monthly or weekly spending limits for each category, ensuring you never overspend.
-      - **Finance Score:** Get a real-time finance score based on your spending habits, allowing you to make informed financial decisions.
+      - Date: February 22, 2025  
+      - Time: 10:00 AM  
+      - Location: Virtual Meeting
   
-      Our new tool also provides **visual analytics**, including **pie charts** and **bar graphs**, so you can easily see your spending distribution.  
-      Start using the **Advanced Budgeting Tools** today and take control of your financial future!
+      Please confirm your availability.
   
       Best,  
-      The Career Team`
+      HR Team`,
     },
-    { 
-      id: 5, sender: "Investment Insights", subject: "Market Trends Report", date: "Feb 15", time: "4:30 PM", 
+    {
+      id: 5,
+      sender: "E-commerce",
+      subject: "Order Shipped: Tracking Available",
+      date: "Feb 15",
+      time: "4:00 PM",
+      content: `Hello,
+  
+      Your order #45678 has been shipped! You can track it using:
+  
+      - Carrier: FedEx  
+      - Tracking Number: 123456789  
+      - Estimated Delivery: February 20, 2025
+  
+      Thank you for shopping with us!`,
+    },
+    {
+      id: 6,
+      sender: "Customer Service",
+      subject: "Feedback Request",
+      date: "Feb 14",
+      time: "12:00 PM",
+      content: `Hello,
+  
+      We would love to hear your feedback about our service.
+  
+      - How was your experience?
+        - [ ] Excellent  
+        - [ ] Good  
+        - [ ] Needs Improvement  
+  
+      Click below to take a quick 2-minute survey.
+  
+      Thank you for your time!`,
+    },
+    {
+      id: 7,
+      sender: "Investment Insights",
+      subject: "Market Trends Report",
+      date: "Feb 13",
+      time: "10:00 AM",
       content: `Dear Investor,
   
-      Staying ahead of the market is crucial, and we are pleased to provide you with our latest investment trends and insights.
+      Stay ahead of the market with our latest investment insights:
   
-      **Key Market Highlights:**
-      
-      - **Technology Sector Boom:** AI and cloud computing stocks have seen a 15% increase over the last quarter.
-      - **Cryptocurrency Developments:** Bitcoin has reached a new high of $60,000, while Ethereum continues its upward trajectory.
-      - **Renewable Energy Investments:** Governments worldwide are allocating more funds towards green energy, making solar and wind stocks a lucrative opportunity.
+      - AI and cloud computing stocks have risen by 15%.  
+      - Bitcoin has hit a new high of $60,000.  
+      - Renewable energy stocks are surging.
   
-      **Expert Recommendations:**  
-      - Diversify your portfolio to mitigate risks.  
-      - Keep an eye on inflation trends that might affect long-term investments.  
-      - Consider investing in ETFs for a balanced and diversified approach.  
-  
-      For a **detailed analysis**, please refer to our full report attached.  
+      Read our full report for details.
   
       Regards,  
-      Investment Insights Team`
+      Investment Insights Team`,
     },
-    { 
-      id: 6, sender: "E-commerce", subject: "Order Shipped: Tracking Available", date: "Feb 9", time: "8:00 AM", 
+    {
+      id: 8,
+      sender: "IT Department",
+      subject: "Password Expiration Notice",
+      date: "Feb 12",
+      time: "9:30 AM",
+      content: `Your company email password is set to expire in 3 days. Please update your password to avoid login issues.`,
+    },
+    {
+      id: 9,
+      sender: "Finance Team",
+      subject: "Salary Credited Successfully",
+      date: "Feb 11",
+      time: "8:00 AM",
       content: `Hello,
   
-      Your order **#12345** has been shipped! You can now track your package in real time.
+      Your salary for February 2025 has been successfully credited to your bank account.
   
-      **Shipping Details:**  
-      - **Carrier:** FedEx  
-      - **Tracking Number:** 987654321  
-      - **Estimated Delivery:** February 12, 2025  
+      - Amount: $4,500  
+      - Transaction ID: SAL987654321  
   
-      **What to Expect:**  
-      - You will receive another email when your package is out for delivery.  
-      - If you are unavailable during delivery, you can schedule a re-delivery.  
-  
-      Thank you for shopping with us!
-  
-      Regards,  
-      E-commerce Team`
+      Thank you.`,
     },
-    { 
-      id: 7, sender: "Customer Service", subject: "Feedback Request", date: "Feb 7", time: "12:00 PM",
+    {
+      id: 10,
+      sender: "Subscription Services",
+      subject: "Renewal Reminder",
+      date: "Feb 10",
+      time: "6:00 PM",
+      content: `Your subscription is set to renew on February 25, 2025. If you wish to make changes, please update your payment method before the renewal date.`,
+    },
+    {
+      id: 11,
+      sender: "Travel Agency",
+      subject: "Flight Booking Confirmation",
+      date: "Feb 9",
+      time: "3:45 PM",
+      content: `Your flight to New York has been booked successfully.
+  
+      - Flight Number: NY123  
+      - Date: March 5, 2025  
+      - Departure: 8:00 AM  
+  
+      Safe travels!`,
+    },
+    {
+      id: 12,
+      sender: "Social Media",
+      subject: "Password Reset Request",
+      date: "Feb 8",
+      time: "2:00 PM",
+      content: `We received a request to reset your password. If this was not you, please secure your account immediately.`,
+    },
+    {
+      id: 13,
+      sender: "Marketing Team",
+      subject: "Exclusive Offer for You!",
+      date: "Feb 7",
+      time: "5:30 PM",
       content: `Hello,
   
-      We hope you had a great experience with our service! We’d love to hear your thoughts.
+      As a valued customer, we're giving you an exclusive 20% discount on your next purchase. Use code **EXCLUSIVE20** at checkout.
   
-      **How was your experience?**  
-      - [ ] Excellent  
-      - [ ] Good  
-      - [ ] Needs Improvement  
+      Offer valid until March 1, 2025.`,
+    },
+    {
+      id: 14,
+      sender: "Security Team",
+      subject: "Unusual Login Attempt Detected",
+      date: "Feb 6",
+      time: "7:00 AM",
+      content: `We've noticed a login attempt from an unknown device. If this was not you, change your password immediately.`,
+    },
+    {
+      id: 15,
+      sender: "Newsletter",
+      subject: "Monthly Updates & Insights",
+      date: "Feb 5",
+      time: "10:00 AM",
+      content: `Check out the latest news, updates, and insights from our team.
   
-      Your feedback helps us improve and provide better service in the future.  
+      - New Features Released
+      - Tips for Better Security
+      - Upcoming Events
   
-      Click below to take a quick 2-minute survey:  
-      [Give Feedback]  
-  
-      Thank you for your time!
-  
-      Best,  
-      Customer Service Team`
-    }
+      Stay informed with our monthly newsletter!`,
+    },
   ];
   
+  
+  
+ 
+
   const toggleStar = (id) => {
     setStarred((prev) => ({ ...prev, [id]: !prev[id] }));
   };
@@ -175,7 +257,8 @@ const Inbox = () => {
     { name: "Transport", value: 655 },
     { name: "Groceries", value: 450 },
   ];
-  const COLORS = ["#4CAF50", "#2196F3", "#FF9800", "#E91E63"];
+  
+  const COLORS = ["#537671", "#a8f27d", "#E8E9E9", "#CBCCCC"]; // Fixed colors
 
   const barData = [
     { name: "Limit", value: 4500 },
@@ -294,7 +377,7 @@ const Inbox = () => {
                         <XAxis dataKey="name" />
                         <YAxis />
                         <Tooltip />
-                        <Bar dataKey="value" fill="#4CAF50" />
+                        <Bar dataKey="value" fill="#a8f27d" />
                       </BarChart>
                     </ResponsiveContainer>
                     <p className="text-center mt-2 text-sm text-gray-500">
