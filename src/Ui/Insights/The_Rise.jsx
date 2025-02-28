@@ -3,7 +3,7 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn, FaWhatsapp } from "react-icons/fa
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 
-const Insights = () => {
+const The_Rise = () => {
   const relatedArticles = [
     { title: "Diversifying Your Portfolio", category: "Investment Strategies" },
     { title: "Understanding Mutual Fund Fees", category: "Personal Finance" },
@@ -146,4 +146,4 @@ const Insights = () => {
   );
 };
 
-export default Insights;
+export default The_Rise;

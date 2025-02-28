@@ -6,9 +6,11 @@ import Transaction from "./Ui/Transaction/Transaction";
 import Cards from "./Ui/Cards/Cards";
 import Promos from "./Ui/Promos/Promos";
 
-import Insights from "./Ui/Insights/Insights";
 import Inbox from "./Ui/Inbox/Inbox";
 import Insights_Main from "./Ui/Insights/Insights_Main";
+import The_Rise from "./Ui/Insights/The_Rise";
+import Finance from "./Ui/Insights/Finance";
+import Innovations from "./Ui/Insights/Innovations";
 
 
 
@@ -24,8 +26,10 @@ const App = () => {
             <Route path="/Cards" element={<Cards />} />
             <Route path="/Promos" element={<Promos  />} />
             <Route path="/Insights_Main" element={<Insights_Main  />} />
-            <Route path="/Insights" element={<Insights  />} />
+            <Route path="/The_Rise" element={<The_Rise />} />
             <Route path="/inbox" element={<Inbox  />} />
+            <Route path="/Finance" element={<Finance  />} />
+            <Route path="/Innovations" element={<Innovations  />} />
 
  
             </Routes>
