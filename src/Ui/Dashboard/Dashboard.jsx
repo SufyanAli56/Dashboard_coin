@@ -4,6 +4,10 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import Logo from "../../assets/symbol (2).png";
 import Union from "../../assets/Union.png";
 import { HiCurrencyDollar } from "react-icons/hi";
+import { IoMdNotificationsOff } from "react-icons/io";
+import { BiSolidPlaneAlt } from "react-icons/bi";
+import { IoHomeOutline } from "react-icons/io5";
+
 import {
   FaRegFolderClosed,
   FaArrowTrendUp,
@@ -36,7 +40,13 @@ const data = [
   { name: "Food & Drink", value: 280, color: "#CBCCCC", percentage: "8%" },
   { name: "Entertainment", value: 175, color: "#B3B3B3", percentage: "5%" },
 ];
-
+const transactions = [
+  { id: 1, name: "Spotify", type: "Subscription", amount: "-$9.99", date: "Feb 27, 2025" },
+  { id: 2, name: "Freelance Work", type: "Income", amount: "+$500.00", date: "Feb 25, 2025" },
+  { id: 3, name: "Amazon", type: "Shopping", amount: "-$120.49", date: "Feb 24, 2025" },
+  { id: 4, name: "Netflix", type: "Subscription", amount: "-$15.99", date: "Feb 22, 2025" },
+  { id: 5, name: "Starbucks", type: "Food & Drinks", amount: "-$5.75", date: "Feb 20, 2025" },
+];
 const data2 = [
   { name: "Mar", income: 5000, expense: 3000 },
   { name: "Apr", income: 5500, expense: 3500 },
@@ -237,7 +247,9 @@ const Dashboard = () => {
         <div className="w-80 border lg:-mt-114 border-gray-300 rounded-xl p-4 flex flex-col gap-3 shadow-md bg-white">
           {/* Header */}
           <div className="flex justify-between items-center">
-            <h2 className="text-lg font-semibold text-gray-700">Daily Limit</h2>
+            <h2 className="text-md font-semibold  text-gray-700">
+              Daily Limit
+            </h2>
             <div className="flex items-center gap-2">
               <h4 className="text-base font-semibold">$2,500.00</h4>
               <p className="text-xs text-gray-500">spent of $20,000.00</p>
@@ -264,14 +276,141 @@ const Dashboard = () => {
             <span className="font-medium">$20,000 limit</span>
           </div>
         </div>
-        <div className="w-80 border h-120 border-gray-300 rounded-xl p-4 flex flex-col gap-3 shadow-md bg-white">
-        <div className="mt-2  flex flex-row gap-18 ">
-          <h1 className="text-lg font-bold">Saving Plans</h1>
-          <p className="text-lg font-extralight text-gray-400">+ Add Plan</p>
-        </div >
-        <h2 className="mt-2 text-gray-400 ">Total Savings</h2>
-        <h1 className="text-xl font-bold ">$84,500</h1>
-        
+        <div className="w-80 border h-128 border-gray-300 rounded-xl p-4 flex flex-col gap-3 shadow-md bg-white">
+          <div className="mt-2  flex flex-row gap-18 ">
+            <h1 className="text-lg font-bold">Saving Plans</h1>
+            <p className="text-lg font-extralight text-gray-400">+ Add Plan</p>
+          </div>
+          <h2 className="mt-2 text-gray-400 ">Total Savings</h2>
+          <h1 className="text-xl font-bold ">$84,500</h1>
+          <div className="border border-gray-300 w-72 h-24 p-4 rounded-md">
+            {/* Header Section */}
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <IoMdNotificationsOff className="bg-gray-300 w-6 h-6 rounded-md" />
+                <h2 className="text-md font-semibold text-gray-700">
+                  Emergency Fund
+                </h2>
+              </div>
+              <BsThreeDotsVertical className="text-gray-500 cursor-pointer" />
+            </div>
+
+            <div className="border absolute ml-76 -mt-12 border-gray-300 w-full md:w-128 max-w-3xl bg-white shadow-lg rounded-lg p-4  mx-auto">
+      {/* Header Section */}
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-lg font-semibold">Recent Transactions</h2>
+        {/* Dropdown */}
+        <div className="flex items-center gap-1 bg-gray-100 px-3 py-1 rounded-lg cursor-pointer">
+          <span className="text-gray-600 text-sm">This Month</span>
+          <FaAngleDown />
+        </div>
+      </div>
+
+      {/* Transactions List */}
+      <div className="space-y-3">
+        {transactions.map((transaction) => (
+          <div
+            key={transaction.id}
+            className="flex justify-between items-center border-b pb-2 last:border-none"
+          >
+            <div>
+              <p className="font-medium">{transaction.name}</p>
+              <p className="text-xs text-gray-500">{transaction.type}</p>
+            </div>
+            <div className="text-right">
+              <p className={`text-sm font-semibold ${transaction.amount.includes("+") ? "text-green-500" : "text-red-500"}`}>
+                {transaction.amount}
+              </p>
+              <p className="text-xs text-gray-500">{transaction.date}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+            {/* Progress Bar */}
+            <div className="w-full bg-gray-200 rounded-full h-3 relative overflow-hidden mt-2">
+              <div
+                className="absolute top-0 left-0 h-full bg-green-300"
+                style={{ width: "70%" }}
+              ></div>
+              <div
+                className="absolute top-0 left-[70%] h-full bg-black"
+                style={{ width: "30%" }}
+              ></div>
+            </div>
+            <div className="flex items-center gap-10 ">
+              <h4>$5,000</h4>
+              <p className="text-gray-400">50%</p>
+              <span className="text-gray-500 font-extralight">
+                Target: $6,000
+              </span>
+            </div>
+          </div>
+          <div className="border border-gray-300 w-72 h-24 p-4 rounded-md">
+            {/* Header Section */}
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <BiSolidPlaneAlt className="bg-gray-300 w-6 h-6 rounded-md" />
+
+                <h2 className="text-md font-semibold text-gray-700">
+                  Vacation Fund
+                </h2>
+              </div>
+              <BsThreeDotsVertical className="text-gray-500 cursor-pointer" />
+            </div>
+
+            {/* Progress Bar */}
+            <div className="w-full bg-gray-200 rounded-full h-3 relative overflow-hidden mt-2">
+              <div
+                className="absolute top-0 left-0 h-full bg-green-300"
+                style={{ width: "70%" }}
+              ></div>
+              <div
+                className="absolute top-0 left-[70%] h-full bg-black"
+                style={{ width: "30%" }}
+              ></div>
+            </div>
+            <div className="flex items-center gap-10 ">
+              <h4>$5,000</h4>
+              <p className="text-gray-400">50%</p>
+              <span className="text-gray-500 font-extralight">
+                Target: $8,000
+              </span>
+            </div>
+          </div>
+          <div className="border border-gray-300 w-72 h-24 p-4 rounded-md">
+            {/* Header Section */}
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <IoHomeOutline className="bg-gray-300 w-6 h-6 rounded-md" />
+
+                <h2 className="text-md font-semibold text-gray-700">
+                  Home Down Payment
+                </h2>
+              </div>
+              <BsThreeDotsVertical className="text-gray-500 cursor-pointer" />
+            </div>
+
+            {/* Progress Bar */}
+            <div className="w-full bg-gray-200 rounded-full h-3 relative overflow-hidden mt-2">
+              <div
+                className="absolute top-0 left-0 h-full bg-green-300"
+                style={{ width: "70%" }}
+              ></div>
+              <div
+                className="absolute top-0 left-[70%] h-full bg-black"
+                style={{ width: "30%" }}
+              ></div>
+            </div>
+            <div className="flex items-center gap-10 ">
+              <h4>$5,000</h4>
+              <p className="text-gray-400">50%</p>
+              <span className="text-gray-500 font-extralight">
+                Target: $10,000
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </>
