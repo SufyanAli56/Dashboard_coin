@@ -1,6 +1,8 @@
-import { FaEllipsisH } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaEllipsisH, FaArrowRight, FaHome, FaUser, FaEnvelope } from "react-icons/fa";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import { Link } from "react-router-dom";
 
 const featuredArticles = [
   {
@@ -50,30 +52,86 @@ const trendingTags = [
 const insights = [
   {
     title: "Maximizing Returns from Real Estate",
-    description: "Learn how to identify lucrative opportunities in the ever-evolving real estate sector.",
+    description: "Learn how to identify lucrative opportunities in the ever-evolving estate sector.",
     category: "Real Estate Investment",
     date: "Aug 15, 2028",
     author: "Sarah Lee",
   },
   {
     title: "Effective Tax Strategies for Investors",
-    description: "Practical advice on optimizing your investment returns through strategic tax planning.",
+    description: "Practical advice on optimizing your investment returns through tax planning.",
     category: "Tax Planning",
     date: "Aug 22, 2028",
     author: "Mark Thompson",
   },
 ];
 
+const recommendations = [
+  {
+    category: "Mutual Funds",
+    date: "Sep 23, 2028",
+    title: "The Rise Of Index Funds",
+    icon: <FaArrowRight />,
+    link: "/The_Rise",
+  },
+  {
+    category: "Personal Finance",
+    date: "Sep 19, 2028",
+    title: "Finance Management Tips",
+    icon: <FaHome />,
+    link: "/Finance",
+  },
+  {
+    category: "Financial",
+    date: "Sep 5, 2028",
+    title: "Innovations in Banking ",
+    icon: <FaUser />,
+    link: "/Innovations",
+  },
+];
+
+const authors = [
+  {
+    name: "Emily Watson",
+    followers: "5K Followers",
+  },
+  {
+    name: "Valentine Roze",
+    followers: "4.5K Followers",
+  },
+  {
+    name: "Sarah Lee",
+    followers: "4K Followers",
+  },
+  {
+    name: "Mark Thompson",
+    followers: "3.5K Followers",
+  },
+  {
+    name: "Jessica Green",
+    followers: "3K Followers",
+  },
+];
+
 const Insights_Main = () => {
+  const [showMoreTags, setShowMoreTags] = useState(false);
+  const [showMoreAuthors, setShowMoreAuthors] = useState(false);
+
+  const handleShowMoreTags = () => {
+    setShowMoreTags(!showMoreTags);
+  };
+
+  const handleShowMoreAuthors = () => {
+    setShowMoreAuthors(!showMoreAuthors);
+  };
+
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
-      {/* Sidebar (hidden on small screens, visible on larger screens) */}
       <Sidebar />
 
       <div className="flex-1">
         <Header />
 
-        {/* Main Content */}
         <div className="p-4 lg:ml-44 lg:mr-2 md:p-6 mt-14">
           {/* Filter Buttons */}
           <div
@@ -111,7 +169,7 @@ const Insights_Main = () => {
 
           {/* Main Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-            {/* Left Column (Featured Articles and Popular Insights) */}
+            {/* Left Column (Featured Articles & Popular Insights) */}
             <div className="lg:col-span-2 flex flex-col gap-6">
               {/* Featured Articles Section */}
               <div>
@@ -123,9 +181,14 @@ const Insights_Main = () => {
                   {featuredArticles.map((article, index) => (
                     <div key={index} className="p-4 rounded-lg border border-gray-200 bg-white shadow-sm">
                       <div className="h-32 bg-gray-300 rounded-lg mb-4"></div>
-                      <p className="text-xs text-green-600 font-medium">{article.category} • {article.date}</p>
+                      <p className="text-xs text-green-600 font-medium">
+                        {article.category} • {article.date}
+                      </p>
                       <h3 className="text-lg font-semibold mt-1">{article.title}</h3>
-                      <p className="text-sm text-gray-600 mt-2">{article.author}</p>
+                      <div className="flex items-center mt-3">
+                            <span className="h-6 w-6 bg-lime-300 rounded-full mr-2"></span>
+                            <p className="text-sm font-medium text-gray-900">{article.author}</p>
+                          </div>
                     </div>
                   ))}
                 </div>
@@ -133,48 +196,64 @@ const Insights_Main = () => {
 
               {/* Popular Insights Section */}
               <div>
-  <div className="flex justify-between items-center mb-4">
-    <h2 className="text-lg font-semibold text-gray-900">Popular Insights</h2>
-    <span className="text-gray-400 text-xl cursor-pointer">...</span>
-  </div>
+                <div className="rounded-xl">
+                  <h2 className="text-lg font-semibold text-gray-900 mb-4">Popular Insights</h2>
 
-  {/* Insights Grid */}
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {insights.map((insight, index) => (
-      <div
-        key={index}
-        className="p-5 bg-green-50 border border-green-200 rounded-2xl shadow-sm flex gap-4 items-start"
-      >
-        {/* Image Placeholder */}
-        <div className="h-10 w-10 sm:h-12 sm:w-12 bg-gray-300 rounded-lg"></div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+                    {insights.map((insight, index) => (
+                      <div
+                        key={index}
+                        className="p-4 bg-stone-100 border border-gray-200 rounded-xl flex flex-col sm:flex-row gap-4 items-start shadow-sm hover:shadow-md transition-shadow"
+                      >
+                        <div className="w-full sm:w-28 h-28 bg-gray-300 rounded-lg flex-shrink-0"></div>
 
-        {/* Content */}
-        <div className="flex-1">
-          <p className="text-xs text-green-700 font-semibold">
-            {insight.category} • {insight.date}
-          </p>
-          <h3 className="text-base font-extrabold text-gray-900 leading-tight">
-            {insight.title}
-          </h3>
-          <p className="text-sm text-gray-600 mt-1 leading-relaxed">
-            {insight.description}
-          </p>
+                        <div className="flex-1 w-full">
+                          <p className="text-xs text-green-900 font-medium">
+                            {insight.category} • {insight.date}
+                          </p>
+                          <h3 className="text-lg font-bold text-gray-900 mt-1 truncate">
+                            {insight.title}
+                          </h3>
+                          <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+                            {insight.description}
+                          </p>
 
-          {/* Author */}
-          <div className="flex items-center mt-3">
-            <span className="h-3.5 w-3.5 bg-green-600 rounded-full mr-2"></span>
-            <p className="text-sm font-bold text-gray-900">{insight.author}</p>
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-</div>
+                          <div className="flex items-center mt-3">
+                            <span className="h-5 w-5 bg-lime-300 rounded-full mr-2"></span>
+                            <p className="text-sm font-medium text-gray-900">{insight.author}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
 
+              {/* Recommended Section */}
+              <div>
+                <div className="p-6 bg-white rounded-lg shadow-sm">
+                  <h2 className="text-lg font-semibold text-gray-900 mb-4">Recommended</h2>
 
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+                    {recommendations.map((item, index) => (
+                      <Link to={item.link} key={index} className="flex flex-col space-y-2 group">
+                        <div className="w-full h-24 bg-gray-300 rounded-lg transition-transform group-hover:scale-105"></div>
+
+                        <p className="text-xs text-gray-500 font-medium mt-1">
+                          {item.category} • {item.date}
+                        </p>
+
+                        <h3 className="text-sm font-semibold text-gray-900 group-hover:text-green-600">
+                          {item.title}
+                        </h3>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Right Column (Recent Articles & Trending Tags) */}
+            {/* Right Column (Recent Articles & Trending Tags & Top Authors) */}
             <div className="w-full lg:w-auto">
               {/* Recent Articles Section */}
               <div className="mb-8">
@@ -197,21 +276,52 @@ const Insights_Main = () => {
               </div>
 
               {/* Trending Tags Section */}
-              <div className="border border-gray-200 p-4 rounded-lg shadow-sm bg-white">
+              <div className="border border-gray-200 p-4 rounded-lg bg-white">
                 <div className="flex justify-between items-center mb-4">
                   <h2 className="text-base font-semibold">Trending Tags</h2>
                   <FaEllipsisH className="text-gray-500 text-sm" />
                 </div>
                 <div className="space-y-4">
-                  {trendingTags.map((tag, index) => (
-                    <div key={index} className="border-b pb-2 last:border-b-0">
+                  {trendingTags.slice(0, showMoreTags ? trendingTags.length : 5).map((tag, index) => (
+                    <div key={index} className="border-b-2 border-gray-200 pb-2 last:border-b-0">
                       <p className="text-sm font-semibold text-gray-900">{tag.tag}</p>
                       <p className="text-sm text-gray-500">{tag.category} • {tag.articles}</p>
                     </div>
                   ))}
                 </div>
-                <button className="mt-4 w-full text-sm font-medium text-gray-700 border border-gray-300 py-2 rounded-lg hover:bg-gray-100">
-                  Show More
+                <button
+                  className="mt-4 w-24 text-sm font-medium text-gray-700 border border-gray-300 py-2 rounded-lg hover:bg-gray-100"
+                  onClick={handleShowMoreTags}
+                >
+                  {showMoreTags ? "Show Less" : "Show More"}
+                </button>
+              </div>
+
+              {/* Top Authors Section */}
+              <div className="p-6 border border-gray-200 mt-6 bg-white rounded-lg">
+                <h2 className="text-lg font-semibold text-gray-900 mb-4">Top Author</h2>
+
+                <div className="space-y-2">
+                  {authors.slice(0, showMoreAuthors ? authors.length : 5).map((author, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center justify-between p-4 border-b-2 border-gray-200"
+                    >
+                      <div className="flex items-center">
+                        <div className="h-10 w-10 bg-lime-300 rounded-full mr-3"></div>
+                        <div>
+                          <p className="text-base font-bold text-gray-900">{author.name}</p>
+                          <p className="text-sm text-gray-500">{author.followers}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  className="mt-4 w-24 text-sm font-medium text-gray-700 border border-gray-300 py-2 rounded-lg hover:bg-gray-100 cursor-pointer"
+                  onClick={handleShowMoreAuthors}
+                >
+                  {showMoreAuthors ? "Show Less" : "Show More"}
                 </button>
               </div>
             </div>
