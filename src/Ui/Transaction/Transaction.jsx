@@ -129,8 +129,9 @@ export default function TransactionTable() {
             ))}
           </div>
         </div>
+        
       </div>
-   
+
     </>
   );
 }

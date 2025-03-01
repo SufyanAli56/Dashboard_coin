@@ -5,7 +5,7 @@ import Dashboard from "./Ui/Dashboard/Dashboard";
 import Transaction from "./Ui/Transaction/Transaction";
 import Cards from "./Ui/Cards/Cards";
 import Promos from "./Ui/Promos/Promos";
-
+import Investments from "./Ui/Investments/Investments";
 import Inbox from "./Ui/Inbox/Inbox";
 import Insights_Main from "./Ui/Insights/Insights_Main";
 import The_Rise from "./Ui/Insights/The_Rise";
@@ -30,7 +30,7 @@ const App = () => {
             <Route path="/inbox" element={<Inbox  />} />
             <Route path="/Finance" element={<Finance  />} />
             <Route path="/Innovations" element={<Innovations  />} />
-
+            <Route path="/investments" element={< Investments />} />
  
             </Routes>
 
