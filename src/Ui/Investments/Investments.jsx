@@ -3,7 +3,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Investments_card from "./Investments_card";
-
+import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 const portfolioData = [
   { month: "Jan", value: 12000 },
   { month: "Feb", value: 15000 },
