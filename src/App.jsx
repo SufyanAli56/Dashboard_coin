@@ -11,31 +11,29 @@ import Insights_Main from "./Ui/Insights/Insights_Main";
 import The_Rise from "./Ui/Insights/The_Rise";
 import Finance from "./Ui/Insights/Finance";
 import Innovations from "./Ui/Insights/Innovations";
-
-
+import Transfer from "./Ui/Transfer/Transfer";
+import Payment from "./Ui/Payment/Payment";
 
 const App = () => {
   return (
     <Router>
-    
-          <div className="flex-1 p-4">
-            <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/Transaction" element={<Transaction />} />
-            <Route path="/invoices" element={<Invoices  />} />
-            <Route path="/Cards" element={<Cards />} />
-            <Route path="/Promos" element={<Promos  />} />
-            <Route path="/Insights_Main" element={<Insights_Main  />} />
-            <Route path="/The_Rise" element={<The_Rise />} />
-            <Route path="/inbox" element={<Inbox  />} />
-            <Route path="/Finance" element={<Finance  />} />
-            <Route path="/Innovations" element={<Innovations  />} />
-            <Route path="/investments" element={< Investments />} />
- 
-            </Routes>
-
-          </div>
-    
+      <div className="flex-1 p-4">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/Transaction" element={<Transaction />} />
+          <Route path="/invoices" element={<Invoices />} />
+          <Route path="/Cards" element={<Cards />} />
+          <Route path="/Promos" element={<Promos />} />
+          <Route path="/Insights_Main" element={<Insights_Main />} />
+          <Route path="/The_Rise" element={<The_Rise />} />
+          <Route path="/inbox" element={<Inbox />} />
+          <Route path="/Finance" element={<Finance />} />
+          <Route path="/Innovations" element={<Innovations />} />
+          <Route path="/investments" element={<Investments />} />
+          <Route path="/transfer" element={<Transfer />} />
+          <Route path="/payment" element={<Payment />} />
+        </Routes>
+      </div>
     </Router>
   );
 };
