@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import Transfer_from from "./Transfer_from";
 import { AiOutlineDollar } from "react-icons/ai";
 import { MdOutlinePayment } from "react-icons/md";
 import { PiVirtualReality } from "react-icons/pi";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
-import Transfer_from from "./Transfer_from";
-
-// Extended Dummy Contact Data for Scrolling
+import Footer from '../../components/Footer/Footer'
 const contacts = [
   { id: 1, name: "Abe Reeves", phone: "120987654322" },
   { id: 2, name: "Audrey Murphy", phone: "120987654323" },
@@ -35,12 +34,21 @@ const contacts = [
   { id: 23, name: "Quinn Foster", phone: "120987654343" },
   { id: 24, name: "Rachel Moore", phone: "120987654344" },
   { id: 25, name: "Samuel Parker", phone: "120987654345" },
+  { id: 26, name: "Tina Roberts", phone: "120987654346" },
+  { id: 27, name: "Ulysses Grant", phone: "120987654347" },
+  { id: 28, name: "Victoria Simmons", phone: "120987654348" },
+  { id: 29, name: "William Turner", phone: "120987654349" },
+  { id: 30, name: "Xander Knight", phone: "120987654350" },
+  { id: 31, name: "Yvonne Adams", phone: "120987654351" },
+  { id: 32, name: "Zachary Bell", phone: "120987654352" },
 ];
+
+
+
 
 const Transfer = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Filter contacts based on search term
   const filteredContacts = contacts.filter(
     (contact) =>
       contact.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -51,73 +59,80 @@ const Transfer = () => {
     <>
       <Header title="Transfer" />
       <Sidebar />
-      <div className="p-2 lg:p-6 lg:ml-44 mt-12 min-h-screen relative">
+
+      <div className="p-2 lg:p-6 lg:ml-44 md:ml-10 mt-12 min-h-screen relative flex flex-col lg:flex-row lg:justify-between">
         
-      <div className="absolute right-4  top-12">
-          <Transfer_from/>
-        </div>
+        {/* Left Section - Transfer Form */}
+        <div className="w-full lg:w-1/2">
+          {/* Transfer Buttons */}
+          <div className="w-full max-w-md mx-auto bg-gray-200 h-20 p-2 rounded-md shadow-md flex justify-around items-center mt-6">
+            <button className="flex flex-col items-center px-2 py-3 text-gray-800 hover:text-green-600 transition">
+              <AiOutlineDollar className="text-2xl mb-1" />
+              <span className="text-sm font-medium">Transfer</span>
+            </button>
 
-        
+            <div className="h-10 w-px bg-gray-400"></div>
 
-        {/* Button Container */}
-        <div className="w-96 bg-gray-200 h-20 p-2 rounded-md shadow-md flex justify-around items-center mt-6">
-          <button className="flex flex-col items-center px-2 py-3 text-gray-800 hover:text-green-600 transition">
-            <AiOutlineDollar className="text-2xl mb-1" />
-            <span className="text-sm font-medium">Transfer</span>
-          </button>
+            <button className="flex flex-col items-center px-2 py-3 text-gray-800 hover:text-green-600 transition">
+              <MdOutlinePayment className="text-2xl mb-1" />
+              <span className="text-sm font-medium">Payment</span>
+            </button>
 
-          <div className="h-10 w-px bg-gray-400"></div>
+            <div className="h-10 w-px bg-gray-400"></div>
 
-          <button className="flex flex-col items-center px-2 py-3 text-gray-800 hover:text-green-600 transition">
-            <MdOutlinePayment className="text-2xl mb-1" />
-            <span className="text-sm font-medium">Payment</span>
-          </button>
+            <button className="flex flex-col items-center px-2 py-3 text-gray-800 hover:text-green-600 transition">
+              <PiVirtualReality className="text-2xl mb-1" />
+              <span className="text-sm font-medium">Virtual Acc</span>
+            </button>
 
-          <div className="h-10 w-px bg-gray-400"></div>
+            <div className="h-10 w-px bg-gray-400"></div>
 
-          <button className="flex flex-col items-center px-2 py-3 text-gray-800 hover:text-green-600 transition">
-            <PiVirtualReality className="text-2xl mb-1" />
-            <span className="text-sm font-medium">Virtual Acc</span>
-          </button>
+            <button className="flex flex-col items-center px-2 py-3 text-gray-800 hover:text-green-600 transition">
+              <FaRegPlusSquare className="text-2xl mb-1" />
+              <span className="text-sm font-medium">Top Up</span>
+            </button>
+          </div>
 
-          <div className="h-10 w-px bg-gray-400"></div>
+          {/* Search Bar */}
+          <div className="mt-4 w-full max-w-md mx-auto flex items-center bg-gray-100 rounded-full shadow-md px-4 py-2">
+            <FiSearch className="text-gray-500 text-lg" />
+            <input
+              type="text"
+              placeholder="Search account..."
+              className="w-full px-2 py-1 outline-none text-gray-800 bg-transparent"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
 
-          <button className="flex flex-col items-center px-2 py-3 text-gray-800 hover:text-green-600 transition">
-            <FaRegPlusSquare className="text-2xl mb-1" />
-            <span className="text-sm font-medium">Top Up</span>
-          </button>
-        </div>
-        <div className="absolute mt-4 w-96 flex items-center bg-gray-100 rounded-full shadow-md px-4 py-2">
-          <FiSearch className="text-gray-500 text-lg" />
-          <input
-            type="text"
-            placeholder="Search account..."
-            className="w-full px-2 py-1 outline-none text-gray-800 bg-transparent"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-        {/* Contact List with Scrolling and Filtering */}
-        <div className="mt-24 w-96 h-130 overflow-y-auto bg-white shadow-lg rounded-lg p-2">
-          {filteredContacts.length > 0 ? (
-            filteredContacts.map((contact) => (
-              <div key={contact.id} className="flex items-center bg-white p-3 rounded-lg shadow-sm mb-2">
-                {/* Avatar */}
-                <div className="w-10 h-10 bg-green-300 rounded-full flex justify-center items-center text-white font-bold text-lg">
-                  {contact.name.charAt(0)}
+          {/* Contact List */}
+          <div className="mt-6 w-full max-w-md mx-auto h-174 overflow-y-auto bg-white shadow-lg rounded-lg p-2">
+            {filteredContacts.length > 0 ? (
+              filteredContacts.map((contact) => (
+                <div key={contact.id} className="flex items-center bg-white p-3 rounded-lg shadow-sm mb-2">
+                  <div className="w-10 h-10 bg-green-300 rounded-full flex justify-center items-center text-white font-bold text-lg">
+                    {contact.name.charAt(0)}
+                  </div>
+                  <div className="ml-4">
+                    <h2 className="font-semibold text-gray-800">{contact.name}</h2>
+                    <p className="text-gray-600 text-sm">{contact.phone}</p>
+                  </div>
                 </div>
-                {/* Contact Details */}
-                <div className="ml-4">
-                  <h2 className="font-semibold text-gray-800">{contact.name}</h2>
-                  <p className="text-gray-600 text-sm">{contact.phone}</p>
-                </div>
-              </div>
-            ))
-          ) : (
-            <p className="text-gray-500 text-center mt-4">No contacts found</p>
-          )}
+              ))
+            ) : (
+              <p className="text-gray-500 text-center mt-4">No contacts found</p>
+            )}
+          </div>
+        </div>
+
+        {/* Right Section - Transfer_from */}
+        <div className="w-full lg:w-1/2 flex justify-center mt-6 lg:mt-0">
+          <Transfer_from />
         </div>
       </div>
+  <div className="md:ml-12">
+  <Footer/>
+  </div>
     </>
   );
 };
