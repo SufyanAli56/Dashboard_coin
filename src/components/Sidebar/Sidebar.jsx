@@ -24,7 +24,7 @@ const Sidebar = () => {
     {
       icon: <BsFillSuitDiamondFill />,
       label: "Investments",
-      path: "/investments",
+      path: "/Investments",
     },
     { icon: <LiaIdCardSolid />, label: "Insights", path: "/Insights_Main" },
     { icon: <VscSettingsGear />, label: "Promos", path: "/Promos" },
