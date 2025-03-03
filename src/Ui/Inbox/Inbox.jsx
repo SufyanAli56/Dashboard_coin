@@ -270,7 +270,7 @@ const Inbox = () => {
       <Header title="Transactions" />
       <Sidebar />
 
-      <div className="p-4 lg:p-6 lg:ml-44 mt-12 min-h-screen text-sm flex flex-col lg:flex-row">
+      <div className="p-4 md:ml-12 lg:p-6 lg:ml-44 mt-12 min-h-screen text-sm flex flex-col lg:flex-row">
         {/* Left Sidebar for Email List */}
         <div className="lg:w-1/3 bg-white p-4 border-r w-full">
           <div className="relative mb-4">
@@ -395,7 +395,9 @@ const Inbox = () => {
         </div>
       </div>
 
-      <Footer />
+    <div className="md:ml-12">
+    <Footer />
+    </div>
     </>
   );
 };
