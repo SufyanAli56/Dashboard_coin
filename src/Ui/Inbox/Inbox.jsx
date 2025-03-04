@@ -393,11 +393,10 @@ const Inbox = () => {
             </p>
           )}
         </div>
+        
       </div>
 
-    <div className="md:ml-12">
-    <Footer />
-    </div>
+      <Footer />
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaFileInvoice, FaCar, FaHome, FaBolt, FaTint, FaWifi, FaPhone, FaMoneyBill } from 'react-icons/fa';
-
+import Footer from '../../components/Footer/Footer'
 const invoiceIcons = {
   "Car Rent": <FaCar className="text-green-600 bg-green-200 p-1 rounded-full" />, 
   "House Rent": <FaHome className="text-blue-600 bg-blue-200 p-1 rounded-full" />, 
@@ -44,6 +44,7 @@ const InvoicesData = () => {
   };
 
   return (
+  <>
     <div className="mt-4 w-full overflow-x-auto border rounded-lg shadow-lg p-4 bg-white">
       <div className="min-w-max w-full h-12 bg-gray-200 rounded-lg flex items-center px-4 font-medium text-gray-800 shadow-sm">
         <span className="w-1/6">Select</span>
@@ -80,7 +81,12 @@ const InvoicesData = () => {
           </button>
         ))}
       </div>
+    
     </div>
+    <div className='lg:-ml-52'>
+      <Footer/>
+    </div>
+  </>
   );
 };
 
