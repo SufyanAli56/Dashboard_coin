@@ -90,7 +90,7 @@ const ChartsStatistics = () => {
       </div>
 
       {/* Statistics Card */}
-      <div className="border border-gray-300 w-80 rounded-xl p-4 shadow-sm bg-white">
+      <div className="border border-gray-300 md:h-170 w-80 rounded-xl p-4 shadow-sm bg-white">
         <div className="flex justify-between items-center">
           <h3 className="text-lg font-semibold text-gray-700">Statistics</h3>
           <div className="flex items-center gap-1 bg-gray-100 px-3 py-1 rounded-lg cursor-pointer">

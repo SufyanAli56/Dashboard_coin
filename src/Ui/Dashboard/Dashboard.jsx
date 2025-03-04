@@ -9,10 +9,11 @@ const Dashboard = () => {
     <>
       <Header title="Dashboard" />
       <Sidebar />
-      <div className="p-4 lg:p-6 lg:ml-44 mt-12 min-h-screen text-sm">
+      <div className="p-4 lg:p-6 md:ml-12 lg:ml-44 mt-14 min-h-screen text-sm">
         <BalanceOverview />
         <ChartsStatistics/>
         <SavingsTransactions/>
+        
       </div>
     </>
   );

@@ -107,7 +107,7 @@ const AssetsCard = () => (
 );
 
 const TransactionsTable = () => (
-<div className="w-full md:w-auto overflow-x-auto md:overflow-x-visible md:ml-12 lg:-ml-24 bg-white border border-gray-300 rounded-lg shadow-md">
+<div className="w-full md:w-140 overflow-x-auto md:overflow-x-visible md:ml-12 lg:-ml-24 bg-white border border-gray-300 rounded-lg shadow-md">
   <div className="flex justify-between items-center bg-white p-4">
     <h2 className="text-xl font-bold text-black">My Portfolio</h2>
     <button className="px-4 py-2 bg-gray-100 text-black border border-gray-300 rounded-md hover:bg-gray-200 transition">

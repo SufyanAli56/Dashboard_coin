@@ -44,14 +44,14 @@ const Invoices = () => {
     <>
       <Header title="Invoices" />
       <Sidebar />
-      <div className="mt-14 lg:ml-48 ">
+      <div className="mt-14 md:ml-14 lg:ml-48 ">
         {/* Responsive Invoice Cards */}
         <div className="overflow-x-auto">
           <div className="flex md:grid md:grid-cols-3 gap-4 min-w-max md:min-w-full">
             {invoiceData.map((invoice, index) => (
               <div 
                 key={index} 
-                className="bg-white shadow-md hover:shadow-lg rounded-xl p-5 min-w-[280px] md:w-96 transition-all duration-300"
+                className="bg-white shadow-md hover:shadow-lg rounded-xl p-6 mt-4 min-w-[280px] md:w-96 transition-all duration-300"
               >
                 {/* Growth and Comparison (Moved to Top) */}
                 <div className="flex justify-between items-center mb-3">

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { FaMoneyBillWave, FaChartLine, FaCcVisa, FaCcMastercard } from "react-icons/fa";
-
+import Footer from '../../components/Footer/Footer'
 
 const generateTransactions = (num) => {
   const categories = ["Income", "Investments", "Utilities", "Food & Dining", "Healthcare"];
@@ -71,9 +71,9 @@ export default function TransactionTable() {
     <>
       <Header title="Transactions" />
       <Sidebar />
-      <div className="p-4 lg:p-6 lg:ml-44 mt-12 min-h-screen text-sm">
+      <div className="p-4 md:ml-12 lg:p-6 lg:ml-44 mt-14 min-h-screen text-sm">
         <div className="flex justify-between items-center mb-4">
-          <button className="px-4 py-2 bg-green-500 text-white rounded">Download</button>
+          <button className="px-4 py-2 bg-black text-white rounded">Download</button>
           <input type="date" className="border px-3 py-2 rounded" />
         </div>
         <div className="bg-white p-4 lg:p-6 rounded-lg shadow-lg">
@@ -131,7 +131,7 @@ export default function TransactionTable() {
         </div>
         
       </div>
-
+      <Footer/>
     </>
   );
 }

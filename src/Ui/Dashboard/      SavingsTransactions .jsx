@@ -3,7 +3,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { CiWarning } from "react-icons/ci";
 import { MdFlight, MdHome } from "react-icons/md";
 import { FaChevronDown } from "react-icons/fa";
-
+import Footer from '../../components/Footer/Footer'
 const SavingsTransactions = () => {
     const activities = [
         {
@@ -95,7 +95,7 @@ const SavingsTransactions = () => {
   return (
     <>
       {/* Daily Limit Card */}
-      <div className="w-80 border lg:-mt-110 border-gray-300 rounded-xl p-4 flex flex-col gap-3 shadow-md bg-white">
+      <div className="w-80 border md:ml-90 md:-mt-170 lg:-ml-1 lg:-mt-144 border-gray-300 rounded-xl p-4 flex flex-col gap-3 shadow-md bg-white">
         <div className="flex justify-between items-center">
           <h2 className="text-md font-semibold text-gray-700">Daily Limit</h2>
           <div className="flex items-center gap-2">
@@ -125,7 +125,7 @@ const SavingsTransactions = () => {
       </div>
 
       {/* Savings Plans Card */}
-      <div className="w-80 border mt-4 border-gray-300 rounded-xl p-4 flex flex-col gap-3 shadow-md bg-white">
+      <div className="w-80 border mt-4 md:ml-90 lg:-ml-1 border-gray-300 rounded-xl p-4 flex flex-col gap-3 shadow-md bg-white">
         <div className="flex justify-between items-center">
           <h2 className="text-lg font-black">Saving Plans</h2>
           <p className="text-gray-400 font-extralight text-xl cursor-pointer">
@@ -180,7 +180,7 @@ const SavingsTransactions = () => {
           </div>
         ))}
       </div>
-      <div className="lg:w-120  lg:ml-90 lg:-mt-100 mt-2  border border-gray-300 rounded-xl shadow-md bg-white p-6 overflow-y-auto h-160">
+      <div className="lg:w-120  lg:ml-90 lg:-mt-100 mt-4  border border-gray-300 rounded-xl shadow-md bg-white p-6 overflow-y-auto h-160">
         {/* Header */}
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-bold">Recent Transactions</h2>
@@ -240,7 +240,7 @@ const SavingsTransactions = () => {
           </table>
         </div>
       </div>
-      <div className="w-80 border lg:ml-216 lg:-mt-114 mt-2 border-gray-300 rounded-xl p-4 shadow-md bg-white">
+      <div className="w-80 border lg:ml-216 lg:-mt-80 mt-2 border-gray-300 rounded-xl p-4 shadow-md bg-white">
       {/* Header */}
       <div className="flex justify-between items-center">
         <h2 className="text-md font-semibold text-gray-700">Recent Activity</h2>
@@ -256,7 +256,7 @@ const SavingsTransactions = () => {
               <div key={idx} className="flex items-start gap-3 relative">
                 {/* Green Circle */}
                 <div className="flex flex-col items-center">
-                  <div className="h-6 w-6 bg-green-400 rounded-full"></div>
+                  <div className="h-8 w-8 bg-green-400 rounded-full"></div>
                   {idx !== activity.events.length - 1 && <div className="h-full w-[2px] bg-green-300"></div>}
                 </div>
 
@@ -272,6 +272,9 @@ const SavingsTransactions = () => {
           </div>
         </div>
       ))}
+    </div>
+    <div className="lg:-ml-52">
+    <Footer/>
     </div>
 
     </>

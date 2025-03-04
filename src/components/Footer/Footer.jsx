@@ -10,7 +10,7 @@ const Footer = () => {
         
         {/* Left Side: Brand & Links */}
         <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
-          <h3 className="text-base md:text-lg font-semibold text-black">
+          <h3 className="text-base md:text-lg  font-semibold text-black">
             Copyright © 2024 Peterdraw
           </h3>
           <div className="flex flex-wrap justify-center md:justify-start gap-3 text-gray-500 text-sm">
