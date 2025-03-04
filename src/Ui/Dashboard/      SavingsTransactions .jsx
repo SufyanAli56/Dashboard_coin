@@ -180,7 +180,7 @@ const SavingsTransactions = () => {
           </div>
         ))}
       </div>
-      <div className="lg:w-120  lg:ml-90 lg:-mt-100 mt-4  border border-gray-300 rounded-xl shadow-md bg-white p-6 overflow-y-auto h-160">
+      <div className="lg:w-120  lg:ml-84 lg:-mt-100 mt-4  border border-gray-300 rounded-xl shadow-md bg-white p-6 overflow-y-auto h-160">
         {/* Header */}
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-bold">Recent Transactions</h2>
