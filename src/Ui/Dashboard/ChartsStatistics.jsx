@@ -1,158 +1,261 @@
 import React from "react";
-import {
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  CartesianGrid,
-  Legend,
-} from "recharts";
-import { HiCurrencyDollar } from "react-icons/hi";
-import { IoMdNotificationsOff } from "react-icons/io";
-import { BiSolidPlaneAlt } from "react-icons/bi";
-import { IoHomeOutline } from "react-icons/io5";
-import { FaRegSquarePlus, FaAngleDown } from "react-icons/fa6";
-import { MdAccessTime } from "react-icons/md";
-
-const data = [
-  { name: "Rent & Living", value: 2100, color: "#1A1A1A", percentage: "60%" },
-  { name: "Investment", value: 525, color: "#A8F27D", percentage: "15%" },
-  { name: "Education", value: 420, color: "#E8E9E9", percentage: "12%" },
-  { name: "Food & Drink", value: 280, color: "#CBCCCC", percentage: "8%" },
-  { name: "Entertainment", value: 175, color: "#B3B3B3", percentage: "5%" },
-];
-
-const data2 = [
-  { name: "Mar", income: 5000, expense: 3000 },
-  { name: "Apr", income: 5500, expense: 3500 },
-  { name: "May", income: 8000, expense: 6000 },
-  { name: "Jun", income: 6000, expense: 4000 },
-  { name: "Jul", income: 7000, expense: 5000 },
-  { name: "Aug", income: 6500, expense: 4500 },
-];
-
-const totalExpense = data.reduce((sum, item) => sum + item.value, 0);
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { CiWarning } from "react-icons/ci";
+import { MdFlight, MdHome } from "react-icons/md";
+import { FaChevronDown } from "react-icons/fa";
+import Footer from "../../components/Footer/Footer";
 
 const ChartsStatistics = () => {
+  const activities = [
+    {
+      day: "Today",
+      events: [
+        {
+          name: "Jamie Smith",
+          action: "updated account settings",
+          time: "16:05",
+        },
+        { name: "Alex Johnson", action: "logged in", time: "13:05" },
+        {
+          name: "Morgan Lee",
+          action: "added a new savings goal for vacation",
+          time: "02:05",
+        },
+      ],
+    },
+    {
+      day: "Yesterday",
+      events: [
+        {
+          name: "Taylor Green",
+          action: "reviewed recent transactions",
+          time: "21:05",
+        },
+        {
+          name: "Wilson Baptista",
+          action: "transferred funds to emergency fund",
+          time: "09:05",
+        },
+      ],
+    },
+  ];
+
+  const savingsPlans = [
+    {
+      name: "Emergency Fund",
+      target: "$20,000",
+      color: "bg-green-500",
+      icon: <CiWarning />,
+      progress: 60, // Progress percentage
+    },
+    {
+      name: "Vacation Fund",
+      target: "$10,000",
+      color: "bg-blue-500",
+      icon: <MdFlight />,
+      progress: 30, // Progress percentage
+    },
+    {
+      name: "Home Down Payment",
+      target: "$50,000",
+      color: "bg-purple-500",
+      icon: <MdHome />,
+      progress: 45, // Progress percentage
+    },
+  ];
+
+  const transactions = [
+    {
+      name: "Electricity Bill",
+      category: "Payments",
+      date: "2028-03-01",
+      time: "04:28:48",
+      amount: "$295.81",
+      note: "Payment for monthly electricity bill",
+      status: "Failed",
+    },
+    {
+      name: "Weekly Groceries",
+      category: "Shopping",
+      date: "2028-03-04",
+      time: "04:28:48",
+      amount: "$204.07",
+      note: "Groceries shopping at local supermarket",
+      status: "Completed",
+    },
+    {
+      name: "Movie Night",
+      category: "Entertainment",
+      date: "2028-02-27",
+      time: "04:28:48",
+      amount: "$97.84",
+      note: "Tickets for movies and snacks",
+      status: "Pending",
+    },
+    {
+      name: "Medical Check-up",
+      category: "Healthcare",
+      date: "2028-02-07",
+      time: "04:28:48",
+      amount: "$323.33",
+      note: "Routine health check-up and medications",
+      status: "Pending",
+    },
+    {
+      name: "Dinner at Italian Restaurant",
+      category: "Dining Out",
+      date: "2028-02-11",
+      time: "04:28:48",
+      amount: "$226.25",
+      note: "Dining out with family at a local Italian restaurant",
+      status: "Pending",
+    },
+  ];
+
   return (
-    <div className="flex flex-col lg:flex-row justify-between gap-6 mt-4">
-      {/* Top Action Bar */}
-      <div className="bg-gray-200 w-full lg:w-80 h-20 rounded-md flex items-center justify-around p-2 shadow-md">
-        {[
-          { icon: <FaRegSquarePlus className="w-5 h-5" />, label: "Top Up" },
-          { icon: <HiCurrencyDollar className="w-5 h-5" />, label: "Transfer" },
-          { icon: <HiCurrencyDollar className="w-5 h-5" />, label: "Request" },
-          { icon: <MdAccessTime className="w-5 h-5" />, label: "History" },
-        ].map((item, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center text-gray-700 hover:text-black"
-          >
-            {item.icon}
-            <p className="text-xs mt-1">{item.label}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* Income & Expense Bar Chart */}
-      <div className="bg-white p-4 rounded-lg h-90 shadow-md w-full lg:w-[500px]">
-        <h1 className="text-sm font-semibold mb-3">Cashflow</h1>
-        <p className="text-sm font-extralight text-gray-500">Total Balance</p>
-        <h3 className="text-3xl font-bold">$562,000</h3>
-        <ResponsiveContainer width="100%" height={250}>
-          <BarChart data={data2}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" stroke="#888" />
-            <YAxis stroke="#888" />
-            <Tooltip />
-            <Legend />
-            <Bar
-              dataKey="income"
-              fill="#000000"
-              barSize={30}
-              radius={[4, 4, 0, 0]}
-              name="Income"
-            />
-            <Bar
-              dataKey="expense"
-              fill="#6fcf97"
-              barSize={30}
-              radius={[4, 4, 0, 0]}
-              name="Expense"
-            />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-
-      {/* Statistics Card */}
-      <div className="border border-gray-300 md:h-170 w-80 rounded-xl p-4 shadow-sm bg-white">
-        <div className="flex justify-between items-center">
-          <h3 className="text-lg font-semibold text-gray-700">Statistics</h3>
-          <div className="flex items-center gap-1 bg-gray-100 px-3 py-1 rounded-lg cursor-pointer">
-            <span className="text-gray-600 text-sm">This Month</span>
-            <FaAngleDown />
-          </div>
-        </div>
-
-        {/* Income & Expense Summary */}
-        <div className="flex mt-8 justify-between text-gray-600 text-sm">
-          <span>
-            Income <strong>($4,800)</strong>
-          </span>
-          <span className="text-green-600">
-            Expense <strong>($3,500)</strong>
-          </span>
-        </div>
-        <div className="border-b mt-2"></div>
-
-        {/* Pie Chart */}
-        <div className="flex flex-col items-center mt-6">
-          <ResponsiveContainer width="100%" height={200}>
-            <PieChart>
-              <Pie
-                data={data}
-                dataKey="value"
-                cx="50%"
-                cy="50%"
-                innerRadius={50}
-                outerRadius={80}
-              >
-                {data.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
-          <div className="absolute mt-20 text-center">
-            <p className="text-gray-500 text-sm">Total Expense</p>
-            <p className="text-2xl font-bold">${totalExpense}</p>
-          </div>
-        </div>
-
-        {/* Legend */}
-        <div className="mt-4 space-y-3">
-          {data.map((item, index) => (
-            <div key={index} className="flex items-center justify-between">
-              <span className="flex items-center gap-2">
-                <span
-                  className="text-xs font-bold text-white px-2 py-1 rounded-lg"
-                  style={{ backgroundColor: item.color }}
-                >
-                  {item.percentage}
-                </span>
-                <span className="text-gray-700 text-sm">{item.name}</span>
-              </span>
-              <span className="text-gray-600 text-sm">${item.value}</span>
+    <>
+      <div className="flex flex-col lg:flex-row gap-4 p-4">
+        {/* Recent Transactions Card */}
+        <div className="lg:w-2/3 w-full border border-gray-300 rounded-xl shadow-md bg-white p-6 overflow-y-auto h-160">
+          {/* Header */}
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-lg font-bold">Recent Transactions</h2>
+            <div className="flex items-center border px-3 py-1 rounded-md text-gray-700 cursor-pointer">
+              <span>This Month</span> <FaChevronDown className="ml-2" />
             </div>
-          ))}
+          </div>
+
+          {/* Transactions Table */}
+          <div className="">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="bg-gray-100 text-left text-sm text-gray-600">
+                  <th className="py-2 px-3">Transaction Name</th>
+                  <th className="py-2 px-3">Date & Time</th>
+                  <th className="py-2 px-3">Amount</th>
+                  <th className="py-2 px-3">Note</th>
+                  <th className="py-2 px-3">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {transactions.map((transaction, index) => (
+                  <tr key={index} className="border-b text-sm">
+                    <td className="py-3 px-3 font-semibold">
+                      {transaction.name}
+                      <p className="text-xs text-gray-500">
+                        {transaction.category}
+                      </p>
+                    </td>
+                    <td className="py-3 px-3">
+                      {transaction.date}
+                      <br />
+                      <span className="text-xs text-gray-500">
+                        {transaction.time}
+                      </span>
+                    </td>
+                    <td className="py-3 px-3 font-bold">
+                      {transaction.amount}
+                    </td>
+                    <td className="py-3 px-3 text-gray-500">
+                      {transaction.note}
+                    </td>
+                    <td className="py-3 px-3">
+                      <span
+                        className={`px-3 py-1 text-xs font-medium rounded-full ${
+                          transaction.status === "Failed"
+                            ? "bg-red-100 text-red-600"
+                            : transaction.status === "Completed"
+                              ? "bg-green-100 text-green-600"
+                              : "bg-yellow-100 text-yellow-600"
+                        }`}
+                      >
+                        {transaction.status}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Right Column */}
+        <div className="lg:w-1/3 w-full flex flex-col md:flex-row lg:flex-col gap-4">
+          {/* Savings Plans Card */}
+          <div className="md:w-1/2 lg:w-full border border-gray-200 rounded-md bg-white p-6 shadow-md">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-bold">Savings Plans</h2>
+              <p className="font-light text-xl text-gray-400">+ Add Plans</p>
+            </div>
+
+            {/* Progress Bars */}
+            <div className="space-y-3">
+              {savingsPlans.map((plan, index) => (
+                <div key={index} className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div
+                        className={`p-2 rounded-full ${plan.color} text-white`}
+                      >
+                        {plan.icon}
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold">{plan.name}</p>
+                        <p className="text-xs text-gray-500">
+                          Target: {plan.target}
+                        </p>
+                      </div>
+                    </div>
+                    <p className="text-sm font-semibold">{plan.progress}%</p>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      className={`${plan.color} h-2 rounded-full`}
+                      style={{ width: `${plan.progress}%` }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Activities Card */}
+          <div className="md:w-1/2 lg:w-full border border-gray-200 rounded-md bg-white p-6 shadow-md">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-bold">Activities</h2>
+              <BsThreeDotsVertical className="text-gray-500 cursor-pointer" />
+            </div>
+
+            {/* Activities List */}
+            <div className="space-y-4">
+              {activities.map((activity, index) => (
+                <div key={index}>
+                  <p className="text-sm font-semibold text-gray-600 mb-2">
+                    {activity.day}
+                  </p>
+                  <div className="space-y-3">
+                    {activity.events.map((event, eventIndex) => (
+                      <div key={eventIndex} className="flex items-center gap-3">
+                        <div className="w-6 h-6 bg-green-400 rounded-full"></div>
+                        <div>
+                          <p className="text-sm font-semibold">{event.name}</p>
+                          <p className="text-xs text-gray-500">
+                            {event.action} · {event.time}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
+    <div className="lg:-ml-44">
+    <Footer />
     </div>
+    </>
   );
 };
 
