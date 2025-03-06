@@ -6,7 +6,7 @@ import { useState } from "react";
 const cardsData = [
   {
     type: "Platinum Plus Visa",
-    brand: <FaCcVisa className="text-4xl text-green-800" />, 
+    brand: <FaCcVisa className="text-4xl text-green-800" />,
     amount: "$415,000",
     cardType: "Debit",
     number: "**** **** **** 9927",
@@ -18,7 +18,7 @@ const cardsData = [
   },
   {
     type: "Freedom Unlimited Mastercard",
-    brand: <FaCcMastercard className="text-4xl text-white" />, 
+    brand: <FaCcMastercard className="text-4xl text-white" />,
     amount: "$532,000",
     cardType: "Credit",
     number: "**** **** **** 5487",
@@ -30,7 +30,7 @@ const cardsData = [
   },
   {
     type: "Elite Traveler Mastercard",
-    brand: <FaCcMastercard className="text-4xl text-green-900" />, 
+    brand: <FaCcMastercard className="text-4xl text-green-900" />,
     amount: "$430,000",
     cardType: "Credit",
     number: "**** **** **** 3321",
@@ -46,22 +46,22 @@ export default function Cards_Left() {
   const [enabled, setEnabled] = useState(Array(cardsData.length).fill(true));
 
   return (
-    <div className="p-4 max-w-full mx-auto mt-6 bg-stone-100 rounded-lg shadow-lg">
+    <div className="p-2 max-w-full mx-auto mt-6 bg-stone-100 md:mt-9 md:ml-11 md:h-fit rounded-lg shadow-lg lg:mt-20 lg:ml-[120px]">
       {/* Header */}
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold text-gray-700">My Cards</h2>
-        <div className="flex gap-[2px] cursor-pointer">
+      <div className="flex px-2 justify-between items-center mb-4 md:pr-7 ">
+        <h2 className="text-lg font-semibold text-gray-700 min-w-max">My Cards</h2>
+        <div className="flex gap-[2px] cursor-pointer min-w-max">
           <IoMdAdd className="text-xl text-gray-700 cursor-pointer" />
           <p className="text-sm text-gray-700">Add</p>
         </div>
       </div>
 
       {/* Responsive Cards Layout */}
-      <div className="flex flex-row md:flex-col gap-4 overflow-x-auto md:overflow-visible p-2">
+      <div className="flex flex-row lg:flex-col gap-4 overflow-x-auto md:overflow-x-auto md:flex-row p-2 whitespace-nowrap">
         {cardsData.map((card, index) => (
           <div
             key={index}
-            className={`p-4 min-w-[320px] md:min-w-full rounded-lg shadow-md ${card.bgColor} ${card.textColor}`}
+            className={`p-4 min-w-[320px] md:min-w-[280px] rounded-lg shadow-md ${card.bgColor} ${card.textColor}`}
           >
             <div className="flex justify-between items-center">
               <span className="font-semibold text-sm">{card.type}</span>
@@ -97,11 +97,11 @@ export default function Cards_Left() {
                     })
                   }
                   className={`${enabled[index] ? "bg-green-500" : "bg-gray-300"}
-                    relative inline-flex h-6 w-11 items-center rounded-full`}
+              relative inline-flex h-6 w-11 items-center rounded-full`}
                 >
                   <span
                     className={`transform transition ease-in-out duration-200 inline-block h-4 w-4 bg-white rounded-full shadow-lg
-                      ${enabled[index] ? "translate-x-6" : "translate-x-1"}`}
+                ${enabled[index] ? "translate-x-6" : "translate-x-1"}`}
                   />
                 </Switch>
               </div>

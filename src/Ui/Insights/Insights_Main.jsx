@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaEllipsisH, FaArrowRight, FaHome, FaUser, FaEnvelope } from "react-icons/fa";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import Footer from "../../components/Footer/Footer"
 import { Link } from "react-router-dom";
 
 const featuredArticles = [
@@ -111,6 +112,10 @@ const authors = [
     name: "Jessica Green",
     followers: "3K Followers",
   },
+  {
+    name: "Elice Green",
+    followers: "5K Followers",
+  },
 ];
 
 const Insights_Main = () => {
@@ -126,13 +131,13 @@ const Insights_Main = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen">
+    <div className="flex flex-col min-h-screen">
       <Sidebar />
 
       <div className="flex-1">
         <Header />
 
-        <div className="p-4 lg:ml-44 lg:mr-2 md:p-6 mt-14">
+        <div className="p-4 lg:ml-44 lg:mr-2 md:p-6 md:ml-10 mt-14">
           {/* Filter Buttons */}
           <div
             className="flex overflow-x-auto gap-2 pb-2"
@@ -158,9 +163,8 @@ const Insights_Main = () => {
             ].map((filter, index) => (
               <button
                 key={index}
-                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition ${
-                  index === 0 ? "bg-green-600 text-white" : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                }`}
+                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition ${index === 0 ? "bg-green-600 text-white" : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  }`}
               >
                 {filter}
               </button>
@@ -168,9 +172,9 @@ const Insights_Main = () => {
           </div>
 
           {/* Main Content Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
             {/* Left Column (Featured Articles & Popular Insights) */}
-            <div className="lg:col-span-2 flex flex-col gap-6">
+            <div className="md:col-span-2 flex flex-col gap-6">
               {/* Featured Articles Section */}
               <div>
                 <div className="flex justify-between items-center mb-4">
@@ -186,9 +190,9 @@ const Insights_Main = () => {
                       </p>
                       <h3 className="text-lg font-semibold mt-1">{article.title}</h3>
                       <div className="flex items-center mt-3">
-                            <span className="h-6 w-6 bg-lime-300 rounded-full mr-2"></span>
-                            <p className="text-sm font-medium text-gray-900">{article.author}</p>
-                          </div>
+                        <span className="h-6 w-6 bg-lime-300 rounded-full mr-2"></span>
+                        <p className="text-sm font-medium text-gray-900">{article.author}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -199,7 +203,7 @@ const Insights_Main = () => {
                 <div className="rounded-xl">
                   <h2 className="text-lg font-semibold text-gray-900 mb-4">Popular Insights</h2>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-4">
                     {insights.map((insight, index) => (
                       <div
                         key={index}
@@ -275,59 +279,63 @@ const Insights_Main = () => {
                 </div>
               </div>
 
+
+
               {/* Trending Tags Section */}
-              <div className="border border-gray-200 p-4 rounded-lg bg-white">
-                <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-base font-semibold">Trending Tags</h2>
-                  <FaEllipsisH className="text-gray-500 text-sm" />
+              <div className="flex flex-col gap-6 md:flex-row md:gap-3 lg:flex-col">
+                {/* Trending Tags Section */}
+                <div className="border border-gray-200 p-6 rounded-lg bg-white md:flex-1 md:min-w-[330px] ">
+                  <div className="flex justify-between items-center mb-4">
+                    <h2 className="text-lg font-semibold">Trending Tags</h2>
+                    <FaEllipsisH className="text-gray-500 text-base" />
+                  </div>
+                  <div className="space-y-3">
+                    {trendingTags.slice(0, showMoreTags ? trendingTags.length : 5).map((tag, index) => (
+                      <div key={index} className="border-b border-gray-200 pb-2 last:border-b-0">
+                        <p className="text-sm font-semibold text-gray-900">{tag.tag}</p>
+                        <p className="text-xs text-gray-500">{tag.category} • {tag.articles}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <button
+                    className="mt-4 w-full text-sm font-medium text-gray-700 border border-gray-300 py-2 rounded-lg hover:bg-gray-100"
+                    onClick={handleShowMoreTags}
+                  >
+                    {showMoreTags ? "Show Less" : "Show More"}
+                  </button>
                 </div>
-                <div className="space-y-4">
-                  {trendingTags.slice(0, showMoreTags ? trendingTags.length : 5).map((tag, index) => (
-                    <div key={index} className="border-b-2 border-gray-200 pb-2 last:border-b-0">
-                      <p className="text-sm font-semibold text-gray-900">{tag.tag}</p>
-                      <p className="text-sm text-gray-500">{tag.category} • {tag.articles}</p>
-                    </div>
-                  ))}
-                </div>
-                <button
-                  className="mt-4 w-24 text-sm font-medium text-gray-700 border border-gray-300 py-2 rounded-lg hover:bg-gray-100"
-                  onClick={handleShowMoreTags}
-                >
-                  {showMoreTags ? "Show Less" : "Show More"}
-                </button>
-              </div>
 
-              {/* Top Authors Section */}
-              <div className="p-6 border border-gray-200 mt-6 bg-white rounded-lg">
-                <h2 className="text-lg font-semibold text-gray-900 mb-4">Top Author</h2>
+                {/* Top Authors Section */}
+                <div className="p-6 border border-gray-200 bg-white rounded-lg md:flex-1 md:min-w-[330px]">
+                  <h2 className="text-lg font-semibold text-gray-900 mb-4">Top Authors</h2>
 
-                <div className="space-y-2">
-                  {authors.slice(0, showMoreAuthors ? authors.length : 5).map((author, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center justify-between p-4 border-b-2 border-gray-200"
-                    >
-                      <div className="flex items-center">
-                        <div className="h-10 w-10 bg-lime-300 rounded-full mr-3"></div>
-                        <div>
-                          <p className="text-base font-bold text-gray-900">{author.name}</p>
-                          <p className="text-sm text-gray-500">{author.followers}</p>
+                  <div className="space-y-3">
+                    {authors.slice(0, showMoreAuthors ? authors.length : 5).map((author, index) => (
+                      <div key={index} className="flex items-center justify-between p-3 border-b border-gray-200">
+                        <div className="flex items-center">
+                          <div className="h-10 w-10 bg-lime-300 rounded-full mr-3"></div>
+                          <div>
+                            <p className="text-base font-bold text-gray-900">{author.name}</p>
+                            <p className="text-xs text-gray-500">{author.followers}</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+                  <button
+                    className="mt-4 w-full text-sm font-medium text-gray-700 border border-gray-300 py-2 rounded-lg hover:bg-gray-100"
+                    onClick={handleShowMoreAuthors}
+                  >
+                    {showMoreAuthors ? "Show Less" : "Show More"}
+                  </button>
                 </div>
-                <button
-                  className="mt-4 w-24 text-sm font-medium text-gray-700 border border-gray-300 py-2 rounded-lg hover:bg-gray-100 cursor-pointer"
-                  onClick={handleShowMoreAuthors}
-                >
-                  {showMoreAuthors ? "Show Less" : "Show More"}
-                </button>
               </div>
             </div>
+
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

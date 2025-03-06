@@ -79,9 +79,9 @@ const PaymentS = () => {
       <Sidebar />
       <div className="flex-1">
         <Header />
-        <div className="flex flex-col md:flex-row gap-3 p-4 lg:ml-44 mt-16 ">
+        <div className="flex flex-col md:flex-row md:ml-10 gap-2 p-4 lg:ml-44 mt-16 ">
           {/* Left Sidebar */}
-          <div className="bg-white p-4 h-fit border border-gray-300 rounded-lg shadow-lg w-full md:w-64 lg:w-72">
+          <div className="bg-white p-4 h-fit border border-gray-300 rounded-lg shadow-lg w-full md:w-[280px] lg:w-72">
             <div className="bg-green-50 p-3 rounded-lg flex justify-between items-center">
               {[
                 { name: "Transfer", icon: <FaExchangeAlt /> },
@@ -231,19 +231,19 @@ const PaymentS = () => {
           </div>
 
           {/* Main Content */}
-          <div className="flex-1 flex border border-gray-300 p-3 rounded-lg flex-col gap-3">
+          <div className="flex-1 flex border border-gray-300 p-3  rounded-lg  flex-col gap-3">
             {/* Recent Payments */}
-            <div className="p-3 border border-gray-300 rounded-lg">
-              <div className="flex justify-between items-center mb-4">
+            <div className="p-3 border border-gray-300 md:w-[370px] lg:w-full rounded-lg">
+              <div className="flex justify-between  items-center mb-4">
                 <h2 className="text-lg font-semibold">Recent Payments</h2>
                 <button className="text-green-600 text-sm">Show More</button>
               </div>
 
-              <div className="flex gap-6 overflow-x-auto">
+              <div className="flex gap-6 overflow-x-auto md:flex-col  lg:flex-row">
                 {payments.map((payment, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-3 border border-gray-300 p-4 rounded-lg shadow-sm w-full md:w-60"
+                    className="flex items-center gap-3 border border-gray-300 p-4 rounded-lg shadow-sm  w-full "
                   >
                     <div className="bg-lime-200 rounded-full p-3">{payment.icon}</div>
                     <div className="flex-1">
@@ -269,7 +269,7 @@ const PaymentS = () => {
               <div className="bg-stone-100 rounded-2xl">
                 <div className="p-4 rounded-lg">
                   <h3 className="text-gray-700 font-bold mb-3">Payment Account</h3>
-                  <div className="flex flex-col md:flex-row gap-4">
+                  <div className="flex flex-col md:flex-col md:w-fit lg:flex-row lg:w-full gap-4">
                     <div className="flex-1 bg-white p-4 rounded-lg shadow flex items-center">
                       <div className="bg-green-900 text-white p-3 rounded-full">
                         <FaCreditCard size={20} />
@@ -296,13 +296,13 @@ const PaymentS = () => {
 
                 <div className="p-4 rounded-lg mt-4">
                   <h3 className="text-gray-700 mb-3">Service Provider</h3>
-                  <div className="flex flex-col md:flex-row gap-4">
+                  <div className="flex flex-col md:flex-col md:w-[305px] lg:w-full lg:flex-row  gap-4">
                     <div className="flex-1 flex items-center bg-white p-3 rounded-lg shadow">
                       <div className="bg-green-200 p-2 rounded-full">
                         <FaTv className="text-green-700" />
                       </div>
                       <select className="ml-3 flex-1 bg-transparent focus:outline-none text-gray-700">
-                        <option>Internet & Cable TV</option>
+                        <option>Internet & TV</option>
                       </select>
                     </div>
 
@@ -317,21 +317,21 @@ const PaymentS = () => {
                   </div>
                 </div>
 
-                <div className="mt-4 p-4">
+                <div className="mt-4 p-4 flex flex-col">
                   <label className="text-gray-600">Virtual Account</label>
                   <input
                     type="text"
-                    className="w-full mt-2 p-3  bg-white outline-lime-200 rounded-lg"
+                    className="w-full mt-2 p-3 md:w-[305px] lg:w-full  bg-white outline-lime-200 rounded-lg"
                     value="9876543210"
                     readOnly
                   />
                 </div>
 
-                <div className="mt-4 p-4">
+                <div className="mt-4 p-4 flex flex-col">
                   <label className="text-gray-600">Amount</label>
                   <input
                     type="text"
-                    className="w-full mt-2 p-3 bg-white outline-lime-200 rounded-lg"
+                    className="w-full mt-2 p-3 md:w-[305px] lg:w-full bg-white outline-lime-200 rounded-lg"
                     value="$150.00"
                     readOnly
                   />
@@ -344,8 +344,8 @@ const PaymentS = () => {
                   </button>
                 </div>
               </div>
-            </div>
-          </div>
+            </div> 
+            </div> 
         </div>
       </div>
     </div>

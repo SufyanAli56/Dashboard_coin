@@ -88,14 +88,16 @@ const transactions = [
         bgColor: "bg-orange-200",
     },
 ];
+
 export default function Cards_Graph() {
     const [selectedPeriod, setSelectedPeriod] = useState("Last 6 Months");
 
     return (
-        <div className="mt-20 ml-2 w-full md:w-[61%] mx-auto px-4 sm:px-6 lg:px-2">
+        <div className="mt-9 w-full md:w-[100%] md:ml-8 lg:w-[60%]  px-4 sm:px-6 lg:px-2 lg:mt-20 lg:ml-4 ">
+            {/* Card Details and Cashflow Graph */}
             <div className="flex flex-col md:flex-row gap-4 md:gap-2">
                 {/* Card Details */}
-                <div className="flex flex-col w-full md:w-auto">
+                <div className="flex flex-col w-full md:w-[40%] lg:w-auto">
                     <div className="bg-white p-4 rounded-xl border border-gray-300">
                         <div className="grid grid-cols-3 gap-2 mb-4">
                             <button className="flex flex-col items-center justify-center p-2 bg-green-100 rounded-lg">
@@ -132,7 +134,7 @@ export default function Cards_Graph() {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-white p-4 rounded-xl mt-2 shadow-md border border-gray-200 w-full md:w-[267px]">
+                    <div className="bg-white p-4 rounded-xl mt-2 shadow-md border border-gray-200 w-full md:w-full lg:w-[267px]">
                         <div className="flex justify-between items-center mb-2">
                             <p className="text-lg font-semibold text-gray-800">Spending Limits</p>
                             <button className="text-gray-500">
@@ -153,7 +155,7 @@ export default function Cards_Graph() {
                 </div>
 
                 {/* Cashflow Graph */}
-                <div className="w-full border border-gray-300 p-4 rounded-lg shadow-lg">
+                <div className="w-full md:w-[60%] lg:w-full border border-gray-300 p-4 rounded-lg shadow-lg">
                     <div className="flex justify-between items-center mb-14">
                         <h2 className="text-lg font-semibold text-gray-700">Cashflow</h2>
                         <Menu as="div" className="relative">
@@ -217,8 +219,7 @@ export default function Cards_Graph() {
                 </div>
 
                 {/* Table */}
-
-              <div className="overflow-x-auto scrollbar-hidden">
+                <div className="overflow-x-auto scrollbar-hidden">
                     <table className="w-full border-collapse text-sm">
                         {/* Table Head */}
                         <thead className="bg-stone-100 text-gray-600">
