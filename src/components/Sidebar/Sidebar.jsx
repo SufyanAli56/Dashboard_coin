@@ -69,7 +69,7 @@ const Sidebar = () => {
               <Link
                 key={index}
                 to={item.path}
-                className="flex items-center gap-2 p-2 hover:bg-green-200 rounded-full transition-all duration-300 ease-in-out"
+                className="flex items-center gap-2 p-2 hover:bg-lime-200 rounded-full transition-all duration-300 ease-in-out"
               >
                 {React.cloneElement(item.icon, { className: "w-5 h-5" })}
                 <span className="sm:inline-block md:hidden lg:inline-block">
@@ -82,7 +82,7 @@ const Sidebar = () => {
             <div className="relative">
               <button
                 onClick={() => setIsTransferOpen(!isTransferOpen)}
-                className="flex items-center gap-2 p-2 hover:bg-green-200 rounded-full w-full transition-all duration-300 ease-in-out"
+                className="flex items-center gap-2 p-2 hover:bg-lime-200 rounded-full w-full transition-all duration-300 ease-in-out"
               >
                 <CiCreditCard1 className="w-5 h-5" />
                 <span className="sm:inline-block md:hidden lg:inline-block">
@@ -99,13 +99,13 @@ const Sidebar = () => {
                 <div className="ml-6 flex flex-col text-xs">
                   <Link
                     to="/transfer"
-                    className="p-1 hover:bg-green-200 rounded-md transition-all duration-300 ease-in-out"
+                    className="p-1 hover:bg-lime-200 rounded-md transition-all duration-300 ease-in-out"
                   >
                     Transfer
                   </Link>
                   <Link
                     to="/payment"
-                    className="p-1 hover:bg-green-200 rounded-md transition-all duration-300 ease-in-out"
+                    className="p-1 hover:bg-lime-200 rounded-md transition-all duration-300 ease-in-out"
                   >
                     Payment
                   </Link>
@@ -116,7 +116,7 @@ const Sidebar = () => {
             {/* Inbox with Notification */}
             <Link
               to="/inbox"
-              className="flex items-center justify-between p-2 hover:bg-green-200 rounded-full transition-all duration-300 ease-in-out"
+              className="flex items-center justify-between p-2 hover:bg-lime-200 rounded-full transition-all duration-300 ease-in-out"
             >
               <div className="flex items-center gap-2">
                 <MdOutlineMail className="w-5 h-5" />

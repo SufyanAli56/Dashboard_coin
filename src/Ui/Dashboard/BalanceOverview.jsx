@@ -154,7 +154,7 @@ const BalanceOverview = () => {
   </div>
 
   {/* Expense Breakdown Card */}
-  <div className="w-full lg:w-1/3 lg:h-102 mt-4 lg:mt-0 lg:ml-4">
+  <div className="w-full lg:w-1/3 h-102 mt-4 lg:mt-0 lg:ml-4">
     <div className="w-full h-auto lg:h-160 border-1 border-gray-300 rounded-md bg-white shadow-sm">
       <div className="p-4">
         <div className="flex flex-row justify-between items-center">
