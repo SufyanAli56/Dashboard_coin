@@ -14,7 +14,7 @@ const PaymentForm = () => {
   const [amount, setAmount] = useState("");
 
   return (
-    <div className="p-4 sm:p-6 w-full max-w-3xl mx-auto">
+    <div className="p-4 lg:w-180 sm:p-6 w-full max-w-3xl mx-auto">
       {/* Recent Payments Section */}
       <div className="bg-white border border-gray-300 p-4 rounded-lg shadow-md">
         <div className="flex justify-between items-center mb-3">

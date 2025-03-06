@@ -95,7 +95,7 @@ const SavingsTransactions = () => {
   return (
     <>
       {/* Daily Limit Card */}
-      <div className="w-80 border md:ml-90 md:-mt-170 lg:-ml-1 lg:-mt-144 border-gray-300 rounded-xl p-4 flex flex-col gap-3 shadow-md bg-white">
+      <div className="w-80 border md:ml-90 md:-mt-170 lg:-ml-1  border-gray-300 rounded-xl p-4 flex flex-col gap-3 shadow-md bg-white">
         <div className="flex justify-between items-center">
           <h2 className="text-md font-semibold text-gray-700">Daily Limit</h2>
           <div className="flex items-center gap-2">
