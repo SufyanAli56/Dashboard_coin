@@ -2,6 +2,7 @@ import { AiFillCheckCircle } from "react-icons/ai";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import Footer from "../../components/Footer/Footer";
 
 const Finance = () => {
   const relatedArticles = [
@@ -19,7 +20,7 @@ const Finance = () => {
         <Header />
 
         {/* Main Content */}
-        <div className="px-4 md:px-6 lg:ml-44 mt-20">
+        <div className="px-4 md:px-6 md:ml-10 lg:ml-44 mt-20">
           {/* Article Header */}
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-lg md:text-xl font-bold text-center text-gray-800">
@@ -45,7 +46,7 @@ const Finance = () => {
         </div>
 
         {/* Article Content and Sidebar */}
-        <div className="px-4 md:px-6 lg:ml-44 mt-8 flex flex-col lg:flex-row gap-6">
+        <div className="px-4 md:px-6 md:ml-10 lg:ml-44 mt-8 flex flex-col lg:flex-row gap-6">
           {/* Left Side - Article Content */}
           <div className="w-full lg:w-3/4 bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl md:text-2xl font-bold text-gray-800">Building a Strong Financial Foundation</h2>
@@ -122,14 +123,18 @@ const Finance = () => {
         </div>
 
         {/* Related Articles Section */}
-        <div className="px-4 md:px-6 lg:ml-44 mt-8 pb-8">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4 text-center sm:text-left">Related Articles</h2>
+        <div className="px-4 md:px-6 md:ml-10 lg:ml-44 mt-8 pb-8">
+          <h2 className="text-xl font-semibold text-gray-800 mb-4 text-center sm:text-left">
+            Related Contents
+          </h2>
 
-          <div className="flex flex-wrap justify-center sm:justify-start gap-4 overflow-x-auto scrollbar-hide">
+          {/* Add tablet-scroll class here */}
+          <div className="flex flex-wrap justify-center sm:justify-start gap-4 tablet-scroll">
             {relatedArticles.map((article, index) => (
               <div
                 key={index}
-                className="w-full sm:w-64 md:w-64 lg:w-64 bg-white p-5 rounded-lg shadow-sm flex-shrink-0"
+                className="w-full sm:w-64 md:w-64 lg:w-64 bg-white p-5 rounded-lg shadow-sm 
+                   flex-shrink-0 transition-transform duration-300 ease-in-out hover:scale-105"
               >
                 <div className="h-32 sm:h-36 bg-gray-200 rounded-md mb-3"></div>
                 <p className="text-xs text-gray-500 font-semibold">{article.category}</p>
@@ -140,6 +145,7 @@ const Finance = () => {
         </div>
 
       </div>
+    
     </div>
   );
 };
