@@ -60,7 +60,7 @@ const Transfer = () => {
       <Header title="Transfer" />
       <Sidebar />
 
-      <div className="p-2 lg:p-6 lg:ml-44 md:ml-10 mt-12 min-h-screen relative flex flex-col lg:flex-row lg:justify-between">
+      <div className="p-2 lg:p-6 lg:ml-20 md:ml-10 mt-12 min-h-screen relative flex flex-col lg:flex-row lg:justify-between">
         
         {/* Left Section - Transfer Form */}
         <div className="w-full lg:w-1/2">
