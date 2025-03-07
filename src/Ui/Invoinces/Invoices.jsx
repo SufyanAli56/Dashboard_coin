@@ -45,15 +45,13 @@ const Invoices = () => {
       <Header title="Invoices" />
       <Sidebar />
       <div className="mt-14 md:ml-14 lg:ml-48 ">
-        {/* Responsive Invoice Cards */}
         <div className="overflow-x-auto">
-          <div className="flex md:grid md:grid-cols-3 gap-4 min-w-max md:min-w-full">
+          <div className="flex md:grid md:grid-cols-3 p-4 gap-4 min-w-max md:min-w-full">
             {invoiceData.map((invoice, index) => (
               <div 
                 key={index} 
-                className="bg-white shadow-md hover:shadow-lg rounded-xl p-6  mt-4 min-w-[280px] md:w-96 transition-all duration-300"
+                className="bg-white shadow-md hover:shadow-lg rounded-xl p-6  mt-4 min-w-[280px] md:w-88 transition-all duration-300"
               >
-                {/* Growth and Comparison (Moved to Top) */}
                 <div className="flex justify-between items-center mb-3">
                   <button className={`${invoice.buttonColor} flex items-center gap-2 px-3 py-1 rounded-full font-medium text-sm shadow-md transition`}>
                     {invoice.buttonIcon}
@@ -64,8 +62,6 @@ const Invoices = () => {
                     <h4 className="text-lg font-semibold text-gray-700">{invoice.lastMonth}</h4>
                   </div>
                 </div>
-
-                {/* Invoice Info */}
                 <div className="flex items-center gap-4">
                   <div className={`${invoice.iconBg} p-3 rounded-full flex items-center justify-center`}>
                     {invoice.icon}

@@ -21,39 +21,9 @@ const invoiceIcons = {
   "Loan EMI": <FaMoneyBill className="text-gray-600" />,
 };
 
-const invoiceNames = [
-  "Car Rent",
-  "House Rent",
-  "Electricity Bill",
-  "Water Bill",
-  "Internet Subscription",
-  "Phone Bill",
-  "Loan EMI",
-];
-
-const generateInvoices = (count) =>
-  Array.from({ length: count }, (_, i) => ({
-    id: i + 1,
-    name: invoiceNames[i % invoiceNames.length],
-    invoiceId: `INV-281005-${(i + 1).toString().padStart(3, "0")}`,
-    amount: `$${(Math.random() * 2000 + 10).toFixed(2)}`,
-    date: `2025-02-${(Math.floor(Math.random() * 28) + 1)
-      .toString()
-      .padStart(2, "0")}`,
-    time: `${Math.floor(Math.random() * 12) + 1}:${Math.floor(
-      Math.random() * 60
-    )
-      .toString()
-      .padStart(2, "0")} ${Math.random() > 0.5 ? "AM" : "PM"}`,
-    status: ["Paid", "Pending", "Overdue"][Math.floor(Math.random() * 3)],
-  }));
-
-const InvoicesData = ({ searchQuery, filterStatus }) => {
-  const [invoices, setInvoices] = useState(generateInvoices(50));
-  const [currentPage, setCurrentPage] = useState(1);
+const InvoicesData = ({ searchQuery, filterStatus, invoices }) => {
+  const [currentPage, setCurrentPage] = useState(1); 
   const itemsPerPage = 15;
-
-  // Filter invoices based on search query and status
   const filteredInvoices = invoices.filter((invoice) => {
     const matchesSearch =
       invoice.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -89,7 +59,6 @@ const InvoicesData = ({ searchQuery, filterStatus }) => {
     <>
       <div className="mt-4 w-full overflow-x-auto border border-stone-300 rounded-lg shadow-lg p-6 bg-white">
         <table className="w-full border-collapse text-sm">
-          {/* Table Head */}
           <thead className="bg-gray-100 text-gray-600 uppercase text-sm font-semibold">
             <tr className="border-b border-gray-300">
               <th className="p-4 text-center">
@@ -102,20 +71,16 @@ const InvoicesData = ({ searchQuery, filterStatus }) => {
               <th className="p-4 text-left">Status</th>
             </tr>
           </thead>
-
-          {/* Table Body */}
           <tbody>
             {currentInvoices.map((invoice) => (
               <tr
                 key={invoice.id}
                 className="border-b border-gray-200 hover:bg-gray-50 transition duration-150"
               >
-                {/* Checkbox */}
                 <td className="p-4 text-center">
                   <input type="checkbox" className="w-4 h-4" />
                 </td>
 
-                {/* Invoice Name with Icon */}
                 <td className="p-4 flex items-center gap-3">
                   <span className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 text-xl">
                     {invoiceIcons[invoice.name] || (
@@ -125,23 +90,16 @@ const InvoicesData = ({ searchQuery, filterStatus }) => {
                   <p className="font-medium text-gray-800">{invoice.name}</p>
                 </td>
 
-                {/* Invoice ID */}
                 <td className="p-4 text-gray-700">{invoice.invoiceId}</td>
-
-                {/* Date & Time */}
                 <td className="p-4 text-gray-700">
                   <span className="block">{invoice.date}</span>
                   <span className="block text-xs text-gray-500">
                     {invoice.time}
                   </span>
                 </td>
-
-                {/* Amount */}
                 <td className="p-4 font-semibold text-gray-900">
                   {invoice.amount}
                 </td>
-
-                {/* Status Badge */}
                 <td className="p-4">
                   <span
                     className={`px-3 py-1 text-xs font-semibold rounded-full ${getStatusClass(
@@ -155,8 +113,6 @@ const InvoicesData = ({ searchQuery, filterStatus }) => {
             ))}
           </tbody>
         </table>
-
-        {/* Pagination */}
         <div className="flex justify-center mt-6">
           {Array.from(
             { length: Math.ceil(filteredInvoices.length / itemsPerPage) },
@@ -176,8 +132,6 @@ const InvoicesData = ({ searchQuery, filterStatus }) => {
           )}
         </div>
       </div>
-
-      {/* Footer */}
       <div className="lg:-ml-52">
         <Footer />
       </div>

@@ -19,7 +19,6 @@ const The_Rise = () => {
       <div className="flex-1">
         <Header title="Insights"/>
 
-        {/* Main Content */}
         <div className="px-4 md:px-6 md:ml-10 lg:ml-44 mt-20">
           {/* Article Header */}
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -45,17 +44,13 @@ const The_Rise = () => {
             <div className="mt-6 bg-gray-300 h-40 md:h-64 lg:h-80 rounded-lg"></div>
           </div>
         </div>
-
-        {/* Article Content and Sidebar */}
         <div className="px-4 md:px-6 md:ml-10 lg:ml-44 mt-8 flex flex-col lg:flex-row gap-6">
-          {/* Left Side - Article Content */}
           <div className="w-full lg:w-3/4 bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl md:text-2xl font-bold text-gray-800">The Appeal of Index Funds</h2>
             <p className="text-gray-600 mt-2 text-sm md:text-base">
               Unlike actively managed funds that attempt to beat the market by selecting a variety of stocks, index funds follow a passive investment strategy. They simply track a predefined basket of stocks that represent a particular market index, such as the S&P 500 or the NASDAQ. This method offers several inherent advantages:
             </p>
 
-            {/* Bullet Points Section */}
             <ul className="list-disc pl-6 text-gray-600 mt-4 text-sm md:text-base">
               <li className="mt-2">
                 <strong>Lower Costs:</strong>Index funds typically have lower expense ratios than actively managed funds because they require less management effort. The reduced cost is a critical factor that directly improves investor returns over time.
@@ -68,32 +63,25 @@ const The_Rise = () => {
               </li>
             </ul>
 
-            {/* Performance Comparison */}
             <h3 className="text-lg md:text-xl font-semibold text-gray-800 mt-6">Performance Comparison</h3>
             <p className="text-gray-600 mt-2 text-sm md:text-base">
               Numerous studies have shown that index funds consistently outperform a large portion of actively managed funds over long periods. According to the S&P Indices Versus Active (SPIVA) reports, over the last 15 years, more than 80% of active fund managers have failed to beat their respective benchmarks. This has progressively driven investors toward the more predictable performance of index funds.
             </p>
-
-            {/* Investor Behavior and Market Trends */}
             <h3 className="text-lg md:text-xl font-semibold text-gray-800 mt-6">Investor Behavior and Market Trends</h3>
             <p className="text-gray-600 mt-2 text-sm md:text-base">
               The rise of index funds also reflects a broader shift in investor behavior, where there is an increasing preference for investment options that are easy to understand and manage. This trend is coupled with the growing availability of financial information and online trading platforms that encourage a more hands-off approach to investing.
             </p>
 
-
-            {/* Conclusion */}
             <h3 className="text-lg md:text-xl font-semibold text-gray-800 mt-6">Conclusion</h3>
             <p className="text-gray-600 mt-2 text-sm md:text-base">
               As the financial landscape continues to evolve, the simplicity and effectiveness of index funds make them a compelling choice for those looking to build long-term wealth. Their ability to offer market-matching performance at a fraction of the cost of actively managed funds ensures they will remain a significant part of the investment conversation for years to come.
             </p>
 
-            {/* Quote */}
             <div className="mt-4 p-4 bg-gray-100 border-l-4 border-green-500 italic text-gray-700 text-sm md:text-base">
               "Index funds are the most sensible equity investment for the great majority of investors"
             </div>
           </div>
 
-          {/* Right Sidebar */}
           <div className="w-full h-fit lg:w-1/4 bg-white p-6 rounded-lg shadow-md">
             <h3 className="text-lg font-semibold text-gray-800">Contents</h3>
             <ul className="text-gray-600 text-sm mt-2 space-y-2">
@@ -103,7 +91,6 @@ const The_Rise = () => {
               <li>Conclusion</li>
             </ul>
 
-            {/* Social Media Share Section */}
             <h3 className="text-lg font-semibold text-gray-800 mt-6">Share</h3>
             <div className="flex space-x-4 mt-2">
               <FaFacebookF className="text-blue-600 cursor-pointer" />
@@ -125,13 +112,11 @@ const The_Rise = () => {
         </div>
 
         {/* Related Articles Section */}
-       {/* Related Articles Section */}
        <div className="px-4 md:px-6 md:ml-10 lg:ml-44 mt-8 pb-8">
   <h2 className="text-xl font-semibold text-gray-800 mb-4 text-center sm:text-left">
     Related Contents
   </h2>
 
-  {/* Add tablet-scroll class here */}
   <div className="flex flex-wrap justify-center sm:justify-start gap-4 tablet-scroll">
     {relatedArticles.map((article, index) => (
       <div

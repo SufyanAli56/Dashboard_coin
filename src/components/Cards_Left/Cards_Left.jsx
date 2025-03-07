@@ -47,7 +47,6 @@ export default function Cards_Left() {
 
   return (
     <div className="p-2 max-w-full mx-auto mt-6 bg-stone-100 md:mt-9 md:ml-11 md:h-fit rounded-lg shadow-lg lg:mt-20 lg:ml-[120px]">
-      {/* Header */}
       <div className="flex px-2 justify-between items-center mb-4 md:pr-7 ">
         <h2 className="text-lg font-semibold text-gray-700 min-w-max">My Cards</h2>
         <div className="flex gap-[2px] cursor-pointer min-w-max">
@@ -55,8 +54,6 @@ export default function Cards_Left() {
           <p className="text-sm text-gray-700">Add</p>
         </div>
       </div>
-
-      {/* Responsive Cards Layout */}
       <div className="flex flex-row lg:flex-col gap-4 overflow-x-auto md:overflow-x-auto md:flex-row p-2 whitespace-nowrap">
         {cardsData.map((card, index) => (
           <div

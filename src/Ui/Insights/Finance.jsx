@@ -18,8 +18,6 @@ const Finance = () => {
 
       <div className="flex-1">
         <Header />
-
-        {/* Main Content */}
         <div className="px-4 md:px-6 md:ml-10 lg:ml-44 mt-20">
           {/* Article Header */}
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -45,16 +43,13 @@ const Finance = () => {
           </div>
         </div>
 
-        {/* Article Content and Sidebar */}
         <div className="px-4 md:px-6 md:ml-10 lg:ml-44 mt-8 flex flex-col lg:flex-row gap-6">
-          {/* Left Side - Article Content */}
           <div className="w-full lg:w-3/4 bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl md:text-2xl font-bold text-gray-800">Building a Strong Financial Foundation</h2>
             <p className="text-gray-600 mt-2 text-sm md:text-base">
               Managing finances wisely requires discipline, strategy, and knowledge. The key to financial security is understanding how to budget, save, invest, and control expenses effectively.
             </p>
 
-            {/* Bullet Points Section */}
             <ul className="list-disc pl-6 text-gray-600 mt-4 text-sm md:text-base">
               <li className="mt-2">
                 <strong>Track Your Expenses:</strong> Understanding where your money goes helps in cutting unnecessary spending and optimizing your budget.
@@ -67,31 +62,25 @@ const Finance = () => {
               </li>
             </ul>
 
-            {/* Investment Planning */}
             <h3 className="text-lg md:text-xl font-semibold text-gray-800 mt-6">Investment Planning</h3>
             <p className="text-gray-600 mt-2 text-sm md:text-base">
               Smart investments help grow wealth over time. Consider diversified investment options such as stocks, bonds, real estate, and retirement funds.
             </p>
 
-            {/* Debt Management */}
             <h3 className="text-lg md:text-xl font-semibold text-gray-800 mt-6">Debt Management Strategies</h3>
             <p className="text-gray-600 mt-2 text-sm md:text-base">
               Managing debt responsibly is crucial for financial stability. Paying off high-interest debts first, consolidating loans, and maintaining a healthy credit score are key aspects of effective debt management.
             </p>
 
-            {/* Conclusion */}
             <h3 className="text-lg md:text-xl font-semibold text-gray-800 mt-6">Conclusion</h3>
             <p className="text-gray-600 mt-2 text-sm md:text-base">
               Financial success is built on smart habits, consistency, and knowledge. By following these finance management tips, you can create a secure future and achieve your financial goals.
             </p>
 
-            {/* Quote */}
             <div className="mt-4 p-4 bg-gray-100 border-l-4 border-green-500 italic text-gray-700 text-sm md:text-base">
               "A budget is telling your money where to go instead of wondering where it went."
             </div>
           </div>
-
-          {/* Right Sidebar */}
           <div className="w-full h-fit lg:w-1/4 bg-white p-6 rounded-lg shadow-md">
             <h3 className="text-lg font-semibold text-gray-800">Contents</h3>
             <ul className="text-gray-600 text-sm mt-2 space-y-2">
@@ -101,7 +90,6 @@ const Finance = () => {
               <li>Conclusion</li>
             </ul>
 
-            {/* Social Media Share Section */}
             <h3 className="text-lg font-semibold text-gray-800 mt-6">Share</h3>
             <div className="flex space-x-4 mt-2">
               <FaFacebookF className="text-blue-600 cursor-pointer" />
@@ -109,8 +97,6 @@ const Finance = () => {
               <FaLinkedinIn className="text-blue-700 cursor-pointer" />
               <FaWhatsapp className="text-green-600 cursor-pointer" />
             </div>
-
-            {/* Tags Section */}
             <h3 className="text-lg font-semibold text-gray-800 mt-6">Tags</h3>
             <div className="flex flex-wrap gap-2 mt-2">
               <span className="bg-gray-200 text-gray-700 px-3 py-1 text-sm rounded">#FinanceTips</span>
@@ -122,13 +108,11 @@ const Finance = () => {
           </div>
         </div>
 
-        {/* Related Articles Section */}
         <div className="px-4 md:px-6 md:ml-10 lg:ml-44 mt-8 pb-8">
           <h2 className="text-xl font-semibold text-gray-800 mb-4 text-center sm:text-left">
             Related Contents
           </h2>
 
-          {/* Add tablet-scroll class here */}
           <div className="flex flex-wrap justify-center sm:justify-start gap-4 tablet-scroll">
             {relatedArticles.map((article, index) => (
               <div

@@ -173,9 +173,7 @@ const Insights_Main = () => {
 
           {/* Main Content Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-            {/* Left Column (Featured Articles & Popular Insights) */}
             <div className="md:col-span-2 flex flex-col gap-6">
-              {/* Featured Articles Section */}
               <div>
                 <div className="flex justify-between items-center mb-4">
                   <h2 className="text-xl font-semibold">Featured Articles</h2>
@@ -259,7 +257,6 @@ const Insights_Main = () => {
 
             {/* Right Column (Recent Articles & Trending Tags & Top Authors) */}
             <div className="w-full lg:w-auto">
-              {/* Recent Articles Section */}
               <div className="mb-8">
                 <div className="flex justify-between items-center mb-4">
                   <h2 className="text-xl font-semibold">Recent Articles</h2>
@@ -283,7 +280,6 @@ const Insights_Main = () => {
 
               {/* Trending Tags Section */}
               <div className="flex flex-col gap-6 md:flex-row md:gap-3 lg:flex-col">
-                {/* Trending Tags Section */}
                 <div className="border border-gray-200 p-6 rounded-lg bg-white md:flex-1 md:min-w-[330px] ">
                   <div className="flex justify-between items-center mb-4">
                     <h2 className="text-lg font-semibold">Trending Tags</h2>

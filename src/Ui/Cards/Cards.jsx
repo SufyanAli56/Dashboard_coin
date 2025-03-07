@@ -9,11 +9,9 @@ const Cards = () => {
   return (
     <> 
       <Header />
-      <div className="flex flex-col lg:flex-row"> {/* Column on mobile, Row on large screens */}
-        {/* Sidebar */}
+      <div className="flex flex-col lg:flex-row">
         <Sidebar />
 
-        {/* Main Content */}
         <div className="flex-1 p-4 md:ml-2 lg:ml-8">
           
         </div>

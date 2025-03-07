@@ -17,8 +17,6 @@ const Innovations = () => {
 
       <div className="flex-1">
         <Header />
-
-        {/* Main Content */}
         <div className="px-4 md:px-6 md:ml-10 lg:ml-44 mt-20">
           {/* Article Header */}
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -43,17 +41,13 @@ const Innovations = () => {
             <div className="mt-6 bg-gray-300 h-40 md:h-64 lg:h-80 rounded-lg"></div>
           </div>
         </div>
-
-        {/* Article Content and Sidebar */}
         <div className="px-4 md:px-6 md:ml-10 lg:ml-44 mt-8 flex flex-col lg:flex-row gap-6">
-          {/* Left Side - Article Content */}
           <div className="w-full lg:w-3/4 bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl md:text-2xl font-bold text-gray-800">The Evolution of Banking Technology</h2>
             <p className="text-gray-600 mt-2 text-sm md:text-base">
               Over the years, banking has undergone a remarkable transformation, shifting from traditional brick-and-mortar institutions to digital-first solutions. Innovations in financial technology (FinTech) have revolutionized the way people interact with banks, ensuring convenience, speed, and enhanced security.
             </p>
 
-            {/* Bullet Points Section */}
             <ul className="list-disc pl-6 text-gray-600 mt-4 text-sm md:text-base">
               <li className="mt-2">
                 <strong>Artificial Intelligence (AI):</strong> AI-driven chatbots and automation tools have improved customer service and fraud detection, making banking more efficient.
@@ -66,25 +60,21 @@ const Innovations = () => {
               </li>
             </ul>
 
-            {/* Future of Banking */}
             <h3 className="text-lg md:text-xl font-semibold text-gray-800 mt-6">The Future of Banking</h3>
             <p className="text-gray-600 mt-2 text-sm md:text-base">
               Banks are continuously evolving, integrating AI, big data analytics, and cybersecurity advancements to enhance user experience and security. With the rise of open banking and decentralized finance (DeFi), the industry is moving towards greater accessibility and innovation.
             </p>
 
-            {/* Conclusion */}
             <h3 className="text-lg md:text-xl font-semibold text-gray-800 mt-6">Conclusion</h3>
             <p className="text-gray-600 mt-2 text-sm md:text-base">
               The rapid pace of innovation in banking is shaping the future of finance, making it more digital, secure, and accessible. As technology continues to evolve, customers can expect even more seamless and efficient banking solutions.
             </p>
 
-            {/* Quote */}
             <div className="mt-4 p-4 bg-gray-100 border-l-4 border-blue-500 italic text-gray-700 text-sm md:text-base">
               "Technology is redefining the way we bank, ensuring a more connected and secure financial future."
             </div>
           </div>
 
-          {/* Right Sidebar */}
           <div className="w-full h-fit lg:w-1/4 bg-white p-6 rounded-lg shadow-md">
             <h3 className="text-lg font-semibold text-gray-800">Contents</h3>
             <ul className="text-gray-600 text-sm mt-2 space-y-2">
@@ -93,7 +83,6 @@ const Innovations = () => {
               <li>Conclusion</li>
             </ul>
 
-            {/* Social Media Share Section */}
             <h3 className="text-lg font-semibold text-gray-800 mt-6">Share</h3>
             <div className="flex space-x-4 mt-2">
               <FaFacebookF className="text-blue-600 cursor-pointer" />
@@ -102,7 +91,6 @@ const Innovations = () => {
               <FaWhatsapp className="text-green-600 cursor-pointer" />
             </div>
 
-            {/* Tags Section */}
             <h3 className="text-lg font-semibold text-gray-800 mt-6">Tags</h3>
             <div className="flex flex-wrap gap-2 mt-2">
               <span className="bg-gray-200 text-gray-700 px-3 py-1 text-sm rounded">#BankingTech</span>
@@ -114,14 +102,11 @@ const Innovations = () => {
           </div>
         </div>
 
-         {/* Related Articles Section */}
-       {/* Related Articles Section */}
        <div className="px-4 md:px-6 md:ml-10 lg:ml-44 mt-8 pb-8">
   <h2 className="text-xl font-semibold text-gray-800 mb-4 text-center sm:text-left">
     Related Contents
   </h2>
 
-  {/* Add tablet-scroll class here */}
   <div className="flex flex-wrap justify-center sm:justify-start gap-4 tablet-scroll">
     {relatedArticles.map((article, index) => (
       <div
