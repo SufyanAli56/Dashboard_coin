@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import Footer from '../../components/Footer/Footer'
 import {
   FaPlusCircle,
   FaShoppingCart,
@@ -75,6 +76,7 @@ const PaymentS = () => {
   ];
 
   return (
+    <>
     <div className="flex flex-col md:flex-row">
       <Sidebar />
       <div className="flex-1">
@@ -346,7 +348,10 @@ const PaymentS = () => {
             </div> 
         </div>
       </div>
+     
     </div>
+    <Footer/>
+    </>
   );
 };
 

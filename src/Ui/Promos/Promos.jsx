@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaFilter, FaSortAmountDown, FaSearch } from "react-icons/fa";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import Footer from "../../components/Footer/Footer";
 
 const promosData = [
   {
@@ -86,10 +87,20 @@ const Promos = () => {
 
   return (
     <div className="flex bg-white min-h-screen">
+   <>
+   <div className="flex  bg-white min-h-screen">
+      {/* Sidebar */}
+
       <Sidebar />
       <div className="flex-1 p-4 sm:p-6 bg-white min-h-screen overflow-auto">
         <Header />
+
         <div className="flex flex-col sm:flex-row mt-16 sm:ml-44 justify-between items-center mb-6 gap-4 sm:gap-0">
+
+        {/* Search & Controls */}
+        <div className="flex flex-col sm:flex-row mt-16 sm:ml-44 md:ml-10 lg:ml-44 justify-between items-center mb-6 gap-4 sm:gap-0">
+          {/* Left Side: Search Bar + Filter/Sort Buttons */}
+
           <div className="flex flex-col sm:flex-row items-center w-full sm:w-2/3 gap-4 sm:gap-3">
             <div className="relative w-full sm:w-1/3">
               <input
@@ -118,6 +129,10 @@ const Promos = () => {
         </div>
 
         <div className="grid sm:ml-44 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        {/* Promo Cards Grid */}
+        <div className="grid sm:ml-44 md:ml-10 lg:ml-44  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
           {filteredPromos.map((promo, index) => (
             <div
               key={index}
@@ -143,6 +158,10 @@ const Promos = () => {
         </div>
       </div>
     </div>
+<div className="md:ml-12">
+<Footer/>
+</div>
+    </>
   );
 };
 
