@@ -130,9 +130,7 @@ const Transfer = () => {
           <Transfer_from />
         </div>
       </div>
-  <div className="md:ml-12">
-  <Footer/>
-  </div>
+      <Footer/>
     </>
   );
 };

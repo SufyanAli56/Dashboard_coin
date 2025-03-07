@@ -135,9 +135,9 @@ const Insights_Main = () => {
       <Sidebar />
 
       <div className="flex-1">
-        <Header />
+        
 
-        <div className="p-4 lg:ml-44 lg:mr-2 md:p-6 md:ml-10 mt-14">
+        <div className="p-4 lg:ml-44 lg:mr-2 md:p-6 md:ml-10 ">
           {/* Filter Buttons */}
           <div
             className="flex overflow-x-auto gap-2 pb-2"
