@@ -51,7 +51,7 @@ const Invoices = () => {
             {invoiceData.map((invoice, index) => (
               <div 
                 key={index} 
-                className="bg-white shadow-md hover:shadow-lg rounded-xl p-6 mt-4 min-w-[280px] md:w-96 transition-all duration-300"
+                className="bg-white shadow-md hover:shadow-lg rounded-xl p-6  mt-4 min-w-[280px] md:w-96 transition-all duration-300"
               >
                 {/* Growth and Comparison (Moved to Top) */}
                 <div className="flex justify-between items-center mb-3">
