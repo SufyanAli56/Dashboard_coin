@@ -81,26 +81,19 @@ const promosData = [
 
 const Promos = () => {
   const [search, setSearch] = useState("");
+
   const filteredPromos = promosData.filter((promo) =>
     promo.title.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <div className="flex bg-white min-h-screen">
-   <>
-   <div className="flex  bg-white min-h-screen">
-      {/* Sidebar */}
-
       <Sidebar />
       <div className="flex-1 p-4 sm:p-6 bg-white min-h-screen overflow-auto">
         <Header />
 
-        <div className="flex flex-col sm:flex-row mt-16 sm:ml-44 justify-between items-center mb-6 gap-4 sm:gap-0">
-
         {/* Search & Controls */}
-        <div className="flex flex-col sm:flex-row mt-16 sm:ml-44 md:ml-10 lg:ml-44 justify-between items-center mb-6 gap-4 sm:gap-0">
-          {/* Left Side: Search Bar + Filter/Sort Buttons */}
-
+        <div className="flex flex-col sm:flex-row mt-16  md:ml-10 lg:ml-44 justify-between items-center mb-6 gap-4 sm:gap-0">
           <div className="flex flex-col sm:flex-row items-center w-full sm:w-2/3 gap-4 sm:gap-3">
             <div className="relative w-full sm:w-1/3">
               <input
@@ -112,43 +105,33 @@ const Promos = () => {
               />
               <FaSearch className="absolute left-3 top-3 text-gray-400" />
             </div>
-
-            <div className="flex gap-2 sm:gap-3">
-              <button className="flex items-center gap-2 border border-gray-300 p-2 rounded-lg">
+            <div className="flex gap-2 sm:gap-3 w-full lg:w-[205px]">
+              <button className="flex items-center w-1/2 gap-2 border border-gray-300 p-2 rounded-lg">
                 <FaFilter /> Filter
               </button>
-              <button className="flex items-center gap-2 border border-gray-300 p-2 rounded-lg">
+              <button className="flex items-center w-1/2 gap-2 border border-gray-300 p-2 rounded-lg">
                 <FaSortAmountDown /> Sort By
               </button>
             </div>
           </div>
-
-          <button className="bg-green-600 text-white px-4 py-2 rounded-lg w-full sm:w-auto">
+          <button className="bg-green-600 text-white px-4 py-2 cursor-pointer rounded-lg w-full sm:w-auto">
             Add Promo
           </button>
         </div>
-
-        <div className="grid sm:ml-44 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        {/* Promo Cards Grid */}
-        <div className="grid sm:ml-44 md:ml-10 lg:ml-44  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
+        <div className="grid  md:ml-10 lg:ml-44 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredPromos.map((promo, index) => (
             <div
               key={index}
               className="bg-white p-6 rounded-lg border border-gray-300 w-full"
             >
-  
               <div className="bg-gray-200 h-40 w-full rounded-lg mb-6"></div>
 
               <h2 className="font-semibold text-xl mb-3">{promo.title}</h2>
-
               <p className="text-gray-600 text-base mb-4">
                 {promo.description.length > 120
                   ? promo.description.substring(0, 120) + "..."
                   : promo.description}
               </p>
-
               <p className="text-gray-500 text-sm">
                 <span className="font-semibold">{promo.valid.split(":")[0]}:</span>{" "}
                 {promo.valid.split(":")[1]}
@@ -156,12 +139,11 @@ const Promos = () => {
             </div>
           ))}
         </div>
+        <div className="mt-8">
+          <Footer />
+        </div>
       </div>
     </div>
-<div className="md:ml-12">
-<Footer/>
-</div>
-    </>
   );
 };
 
