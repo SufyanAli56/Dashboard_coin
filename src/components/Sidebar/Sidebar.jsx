@@ -42,26 +42,26 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 z-[100] h-screen bg-[#ECF4E9] shadow-lg border-r border-gray-200 font-outfit transition-transform duration-300 ease-in-out
-        ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:w-16 lg:w-48`}
+        className={` sm:w-24 fixed top-0 left-0 z-[100] h-screen bg-[#ECF4E9] shadow-lg border-r border-gray-200 font-outfit transition-transform duration-300 ease-in-out
+        ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}  md:translate-x-0  md:w-16 lg:w-48`}
       >
         <div className="h-full flex flex-col p-4 text-gray-900">
           {/* Sidebar Header */}
           <div className="flex items-center justify-between mb-6">
-  <div className="flex items-center gap-2">
-    {/* Hide Logo image on mobile screens, show on larger screens */}
-    <img src={Logo} alt="Logo" className="h-6 w-6 " />
-    <h2 className="text-lg  font-semibold sm:block md:hidden lg:block">
-      Coinest
-    </h2>
-  </div>
-  <button
-    onClick={() => setIsSidebarOpen(false)}
-    className="md:hidden"
-  >
-    ✕
-  </button>
-</div>
+            <div className="flex items-center gap-2">
+              {/* Hide Logo image on mobile screens, show on larger screens */}
+              <img src={Logo} alt="Logo" className="h-6 w-6 " />
+              <h2 className="text-lg  font-semibold sm:block md:hidden lg:block">
+                Coinest
+              </h2>
+            </div>
+            <button
+              onClick={() => setIsSidebarOpen(false)}
+              className="md:hidden"
+            >
+              ✕
+            </button>
+          </div>
 
           {/* Sidebar Navigation */}
           <nav className="flex flex-col space-y-1 text-sm">
