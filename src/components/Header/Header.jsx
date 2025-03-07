@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { FaRegCommentDots } from "react-icons/fa";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import { FaGripLines } from "react-icons/fa";
+
 import User from "../../assets/user01.png";
 const Header = ({
   title = "Dashboard",
@@ -63,7 +63,7 @@ const Header = ({
               <FaRegCommentDots className="text-gray-700 text-lg" />
             </button>
 
-            <div className="relative hidden md:flex">
+            <div className="relative hidden md:flex lg:mr-2">
               <button className="bg-gray-100 p-1 rounded-full hover:bg-gray-200 transition">
                 <IoIosNotificationsOutline className="text-gray-700 text-2xl" />
               </button>
@@ -71,8 +71,8 @@ const Header = ({
             </div>
 
             {/* User Profile */}
-            <div className="flex items-center  gap-2">
-              <span className="hidden sm:block font-medium text-gray-700">
+            <div className="flex items-center  gap-2 lg:mr-12">
+              <span className="hidden sm:block text-sm font-medium text-gray-700">
                 Andrew Forbist
               </span>
               <img src={User} alt="" className="w-8 h-8 rounded-full" />

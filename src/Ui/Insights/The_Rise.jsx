@@ -2,7 +2,7 @@ import { AiFillCheckCircle } from "react-icons/ai";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
-
+import Footer from '../../components/Footer/Footer'
 const The_Rise = () => {
   const relatedArticles = [
     { title: "Diversifying Your Portfolio", category: "Investment Strategies" },
@@ -12,11 +12,12 @@ const The_Rise = () => {
   ];
 
   return (
+    <>
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
       <Sidebar className="hidden md:block" />
 
       <div className="flex-1">
-        <Header />
+        <Header title="Insights"/>
 
         {/* Main Content */}
         <div className="px-4 md:px-6 md:ml-10 lg:ml-44 mt-20">
@@ -149,6 +150,8 @@ const The_Rise = () => {
 
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 
