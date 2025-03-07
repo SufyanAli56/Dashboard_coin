@@ -94,7 +94,6 @@ export default function Cards_Graph() {
 
     return (
         <div className="mt-9 w-full md:w-[100%] md:ml-8 lg:w-[60%]  px-4 sm:px-6 lg:px-2 lg:mt-20 lg:ml-4 ">
-            {/* Card Details and Cashflow Graph */}
             <div className="flex flex-col md:flex-row gap-4 md:gap-2">
                 {/* Card Details */}
                 <div className="flex flex-col w-full md:w-[40%] lg:w-auto">
@@ -210,18 +209,15 @@ export default function Cards_Graph() {
 
             {/* Transactions Table */}
             <div className="bg-white border border-gray-300 shadow-lg rounded-lg overflow-hidden w-full max-w-5xl mt-6">
-                {/* Header */}
+
                 <div className="p-4 flex justify-between items-center">
                     <h2 className="text-xl font-semibold">Transactions</h2>
                     <button className="bg-gray-100 px-4 py-2 rounded-md text-sm flex items-center gap-2">
                         This Month <span className="text-gray-500">▼</span>
                     </button>
                 </div>
-
-                {/* Table */}
                 <div className="overflow-x-auto scrollbar-hidden">
                     <table className="w-full border-collapse text-sm">
-                        {/* Table Head */}
                         <thead className="bg-stone-100 text-gray-600">
                             <tr>
                                 <th className="p-3 text-center"><input type="checkbox" /></th>
@@ -233,14 +229,10 @@ export default function Cards_Graph() {
                                 <th className="p-3 min-w-[120px]">Status</th>
                             </tr>
                         </thead>
-
-                        {/* Table Body */}
                         <tbody>
                             {transactions.map((transaction, index) => (
                                 <tr key={index} className="border-b border-stone-300 hover:bg-gray-50">
                                     <td className="p-3 text-center"><input type="checkbox" /></td>
-
-                                    {/* Transaction Name with Icon */}
                                     <td className="p-3 flex items-center gap-3">
                                         <span className={`w-10 h-10 flex items-center justify-center rounded-full bg-lime-200`}>
                                             {transaction.icon}
@@ -250,8 +242,6 @@ export default function Cards_Graph() {
                                             <p className="text-xs text-gray-500">{transaction.category}</p>
                                         </div>
                                     </td>
-
-                                    {/* Other Columns */}
                                     <td className="p-3 text-gray-700">{transaction.id}</td>
                                     <td className="p-3 text-gray-700">
                                         <span className="block">{transaction.date}</span>
@@ -261,8 +251,6 @@ export default function Cards_Graph() {
                                         {transaction.amount}
                                     </td>
                                     <td className="p-3 text-gray-700">{transaction.note}</td>
-
-                                    {/* Status Badge */}
                                     <td className="p-3">
                                         <span className={`px-3 py-1 text-xs rounded-full ${transaction.status === "Completed" ? "bg-teal-900 text-white" : "bg-lime-200 text-gray-900"}`}>
                                             {transaction.status}

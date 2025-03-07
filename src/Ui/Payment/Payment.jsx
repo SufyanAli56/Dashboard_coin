@@ -43,7 +43,7 @@ const PaymentS = () => {
 
   const toggleSection = (section) => {
     setOpenSection(openSection === section ? "" : section);
-    setSelectedItem(""); // Reset selected item when changing section
+    setSelectedItem("");
   };
 
   const handleItemClick = (item) => {
@@ -110,9 +110,8 @@ const PaymentS = () => {
               </div>
             </div>
 
-            {/* Categories */}
             <div className="mt-3 space-y-2">
-              {/* Healthcare */}
+
               <button
                 className={`flex items-center w-full p-2 rounded-md ${openSection === "Healthcare" ? "bg-green-100 text-green-700" : "text-gray-700 hover:bg-gray-200"
                   }`}
@@ -230,7 +229,6 @@ const PaymentS = () => {
             </div>
           </div>
 
-          {/* Main Content */}
           <div className="flex-1 flex border border-gray-300 p-3  rounded-lg  flex-col gap-3">
             {/* Recent Payments */}
             <div className="p-3 border border-gray-300 md:w-[370px] lg:w-full rounded-lg">

@@ -3,7 +3,6 @@ import { FaFilter, FaSortAmountDown, FaSearch } from "react-icons/fa";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 
-// Promos Data
 const promosData = [
   {
     title: "Exclusive Credit Card Offer",
@@ -81,27 +80,17 @@ const promosData = [
 
 const Promos = () => {
   const [search, setSearch] = useState("");
-
-  // Filter promos based on search input
   const filteredPromos = promosData.filter((promo) =>
     promo.title.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <div className="flex bg-white min-h-screen">
-      {/* Sidebar */}
       <Sidebar />
-
-      {/* Main Content */}
       <div className="flex-1 p-4 sm:p-6 bg-white min-h-screen overflow-auto">
-        {/* Header */}
         <Header />
-
-        {/* Search & Controls */}
         <div className="flex flex-col sm:flex-row mt-16 sm:ml-44 justify-between items-center mb-6 gap-4 sm:gap-0">
-          {/* Left Side: Search Bar + Filter/Sort Buttons */}
           <div className="flex flex-col sm:flex-row items-center w-full sm:w-2/3 gap-4 sm:gap-3">
-            {/* Search Bar (Full Width on Mobile, Fixed Width on Desktop) */}
             <div className="relative w-full sm:w-1/3">
               <input
                 type="text"
@@ -113,7 +102,6 @@ const Promos = () => {
               <FaSearch className="absolute left-3 top-3 text-gray-400" />
             </div>
 
-            {/* Filter & Sort Buttons (Stacked on Mobile, Inline on Desktop) */}
             <div className="flex gap-2 sm:gap-3">
               <button className="flex items-center gap-2 border border-gray-300 p-2 rounded-lg">
                 <FaFilter /> Filter
@@ -124,33 +112,28 @@ const Promos = () => {
             </div>
           </div>
 
-          {/* Add Promo Button (Full Width on Mobile, Auto Width on Desktop) */}
           <button className="bg-green-600 text-white px-4 py-2 rounded-lg w-full sm:w-auto">
             Add Promo
           </button>
         </div>
 
-        {/* Promo Cards Grid */}
         <div className="grid sm:ml-44 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredPromos.map((promo, index) => (
             <div
               key={index}
               className="bg-white p-6 rounded-lg border border-gray-300 w-full"
             >
-              {/* Placeholder Image */}
+  
               <div className="bg-gray-200 h-40 w-full rounded-lg mb-6"></div>
 
-              {/* Card Title */}
               <h2 className="font-semibold text-xl mb-3">{promo.title}</h2>
 
-              {/* Card Description */}
               <p className="text-gray-600 text-base mb-4">
                 {promo.description.length > 120
                   ? promo.description.substring(0, 120) + "..."
                   : promo.description}
               </p>
 
-              {/* Valid Date */}
               <p className="text-gray-500 text-sm">
                 <span className="font-semibold">{promo.valid.split(":")[0]}:</span>{" "}
                 {promo.valid.split(":")[1]}
